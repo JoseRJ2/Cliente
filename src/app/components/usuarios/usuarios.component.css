@@ -2,3 +2,11 @@
 h1 {
     text-align: center;
 }
+/* En tu archivo de estilos CSS */
+.nuevo {
+    font-weight: bold; /* Hace que el texto sea más grueso */
+    color: #000000; /* Cambia el color del texto a azul, puedes ajustar el color según tus preferencias */
+    font-size: 1.2em; /* Ajusta el tamaño del texto según tus preferencias */
+    /* Otros estilos que desees agregar */
+  }
+  

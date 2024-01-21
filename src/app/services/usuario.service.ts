@@ -15,4 +15,8 @@ export class UsuarioService {
   existe(correo : any, password : any){ 
     return this.http.post(`${environment.API_URI}/usuarios/ValidarUsuario`,{"correo":correo, "contrasena":password});
   }
+  
+  listOne(id_usuario : any) {
+    return this.http.get(`${environment.API_URI}/usuarios/${id_usuario}`);
+  }
 }
