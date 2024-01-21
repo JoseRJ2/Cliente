@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+<h1>Tallas</h1>
+<div class="row">
+    <div class="input-field col s2">
+        <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearTalla" (click)="crearTalla()"><i class="material-icons">add</i>Nueva Talla</a></td>
+    </div>
+    <div class="input-field col s3">
+        <input id="last_name" [(ngModel)]="talla.id" type="text" class="validate">
+        <label for="last_name">Buscar Rol(id)</label>
+    </div>
+    <div class="input-field col s3">
+        <a class="waves-effect waves-light btn" (click)="buscarTalla(talla.id)"><i class="material-icons left">search</i></a>
+    </div>
+    </div>
+<div class="row">
+    <div class="row" *ngIf="tallas != undefined">
+    <div class="col s12">
+        <table class="highlight responsive-table">
+        <thead>
+            <tr>
+            <th>Id</th>
+            <th>Talla</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let talla of tallas">
+                <td>{{talla.id}}</td>
+                <td>{{talla.talla}}</td>
+                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalActualizarTalla" (click)="actualizarTalla(talla.id)"><i class="material-icons">edit</i></a></td>
+                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarTalla" (click)="eliminarTalla(talla.id)"><i class="material-icons">delete</i></a></td>
+            </tr>
+        </tbody>
+        </table>
+
+<!-- Empieza Modal modificar Rol-->
+<div id="modalActualizarTalla" class="modal">
+    <div class="modal-content">
+    <h4>Modificar Talla</h4>
+    <div class="row">
+        <div class="input-field col s5">
+        <label>Nombre: </label>
+        <input type="text" class="validate">
+        </div>
+    </div>
+    <div class="row">
+    </div>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarActualizarTalla()">Actualizar</a>
+    </div>
+</div>
+<!-- Termina Modal -->
+ <!-- Empieza Modal Eliminar Rol -->
+ <div id="modalEliminarTalla" class="modal">
+    <div class="modal-content">
+      <h4>¿Estas seguro de eliminar esta talla?</h4>
+      <div class="row">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat">Cancelar</a>
+      <a class="btn" (click)="guardarEliminarTalla()">Eliminar</a>
+    </div>
+</div>
+<!-- Termina Modal -->
+
+<!-- Empieza Modal Crear Talla -->
+<div id="modalCrearTalla" class="modal">
+    <div class="modal-content">
+    <h4>Crear Talla</h4>
+    <div class="row">
+        <div class="input-field col s12">
+        <label>Talla: </label>
+        <input type="text" class="validate">
+        </div>
+    </div>
+    <div class="row">
+    </div>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarCrearTalla()">Crear</a>
+    </div>
+</div>
+<!-- Termina Modal -->

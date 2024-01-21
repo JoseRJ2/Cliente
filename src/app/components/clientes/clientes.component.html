@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+<h1>Clientes</h1>
+<div class="row">
+    <div class="input-field col s2">
+        <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearCliente" (click)="agregarCliente()"><i class="material-icons">add</i>Nuevo usuario</a></td>
+    </div>
+    <div class="input-field col s3">
+        <input id="last_name" [(ngModel)]="cliente.id" type="text" class="validate">
+        <label for="last_name">Buscar Cliente(id)</label>
+    </div>
+    <div class="input-field col s3">
+        <a class="waves-effect waves-light btn" (click)="buscarCliente(cliente.id)"><i class="material-icons left">search</i></a>
+    </div>
+    </div>
+<div class="row">
+    <div class="row" *ngIf="clientes != undefined">
+    <div class="col s12">
+        <table class="highlight responsive-table">
+        <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clientes">
+                <td>{{cliente.nombre}}</td>
+                <td>{{cliente.telefono}}</td>
+                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalActualizarCliente" (click)="actualizarCliente(cliente.id)"><i class="material-icons">edit</i></a></td>
+                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarCliente" (click)="eliminarCliente(cliente.id)"><i class="material-icons">delete</i></a></td>
+            </tr>
+        </tbody>
+        </table>
+<!-- Empieza Modal modificar Usuario -->
+<div id="modalActualizarCliente" class="modal">
+    <div class="modal-content">
+    <h4>Modificar Cliente</h4>
+    <div class="row">
+        <div class="input-field col s12">
+        <label>Nombre: </label>
+        <input type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+        <label>Direccion: </label>
+        <input type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+        <label>Telefono: </label>
+        <input type="text" class="validate">
+        </div>
+        <div class="input-field col s6">
+        <label>Correo: </label>
+        <input type="text" class="validate">
+        </div>
+    </div>
+    <div class="row">
+    </div>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarActualizarCliente()">Modificar</a>
+    </div>
+</div>
+<!-- Termina Modal -->
+ <!-- Empieza Modal Eliminar Cliente -->
+ <div id="modalEliminarCliente" class="modal">
+    <div class="modal-content">
+      <h4>¿Estas seguro de eliminar este cliente?</h4>
+      <div class="row">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat">Cancelar</a>
+      <a class="btn" (click)="guardarEliminarCliente()">Eliminar</a>
+    </div>
+</div>
+<!-- Termina Modal -->
+<!-- Empieza Modal Crear Usuario -->
+<div id="modalAgregarCliente" class="modal">
+    <div class="modal-content">
+    <h4>Agregar Cliente</h4>
+    <div class="row">
+        <div class="input-field col s12">
+        <label>Nombre: </label>
+        <input type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+        <label>Direccion: </label>
+        <input type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+        <label>Telefono: </label>
+        <input type="text" class="validate">
+        </div>
+        <div class="input-field col s6">
+        <label>Correo: </label>
+        <input type="text" class="validate">
+        </div>
+    </div>
+    <div class="row">
+    </div>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarActualizarCliente()">Agregar</a>
+    </div>
+</div>
+<!-- Termina Modal -->

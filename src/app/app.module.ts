@@ -8,6 +8,10 @@ import { HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { TallasComponent } from './components/tallas/tallas.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
     InicioComponent,
     LoginComponent,
     NavbarComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    ProductosComponent,
+    ClientesComponent,
+    RolesComponent,
+    TallasComponent
   ],
   imports: [
     BrowserModule,

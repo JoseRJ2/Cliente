@@ -1,0 +1,127 @@
+<app-navbar></app-navbar>
+    <h1>Productos</h1>
+    <div class="row">
+    <div class="input-field col s2">
+        <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearProducto" (click)="crearProducto()"><i class="material-icons">add</i>Nuevo usuario</a></td>
+    </div>
+    <div class="input-field col s3">
+        <input id="last_name" [(ngModel)]="producto.id" type="text" class="validate">
+        <label for="last_name">Buscar Usuario(id)</label>
+    </div>
+    <div class="input-field col s3">
+        <a class="waves-effect waves-light btn" (click)="buscarProducto(producto.id)"><i class="material-icons left">search</i></a>
+    </div>
+    </div>
+    <div class="row">
+    <div class="row" *ngIf="productos != undefined">
+    <div class="col s12">
+        <table class="highlight responsive-table">
+        <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.modelo}}</td>
+                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarProducto" (click)="actualizarProducto(producto.id)"><i class="material-icons">edit</i></a></td>
+                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarProducto" (click)="eliminarProducto(producto.id)"><i class="material-icons">delete</i></a></td>
+            </tr>
+        </tbody>
+        </table>
+        <!-- Empieza Modal modificar Usuario -->
+        <div id="modalModificarProducto" class="modal">
+            <div class="modal-content">
+            <h4>Modificar Producto</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                <label>Nombre: </label>
+                <input type="text" class="validate">
+                </div>
+                <div class="input-field col s12">
+                <label>Modelo: </label>
+                <input type="text" class="validate">
+                </div>
+                <div class="input-field col s12">
+                <label>Talla: </label>
+                <input type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                <label>Color: </label>
+                <input type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                <label>Precio: </label>
+                <input type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                    <label>Cantidad: </label>
+                    <input type="text" class="validate">
+                </div>
+            </div>
+            <div class="row">
+            </div>
+            </div>
+            <div class="modal-footer">
+            <a class="modal-close btn-flat">Cancelar</a>
+            <a class="btn" (click)="guardarActualizarProducto()">Modificar</a>
+            </div>
+        </div>
+        <!-- Termina Modal -->
+        <!-- Empieza Modal Eliminar Usuario -->
+     <div id="modalEliminarProducto" class="modal">
+        <div class="modal-content">
+          <h4>¿Estas seguro de eliminar este producto?</h4>
+          <div class="row">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close btn-flat">Cancelar</a>
+          <a class="btn" (click)="guardarEliminarProducto(producto.id)">Eliminar</a>
+        </div>
+    </div>
+    <!-- Termina Modal -->
+    <!-- Empieza Modal modificar Usuario -->
+    <div id="modalCrearProducto" class="modal">
+        <div class="modal-content">
+        <h4>Nuevo Producto</h4>
+        <div class="row">
+            <div class="input-field col s12">
+            <label>Nombre: </label>
+            <input type="text" class="validate">
+            </div>
+            <div class="input-field col s12">
+            <label>Modelo: </label>
+            <input type="text" class="validate">
+            </div>
+            <div class="input-field col s12">
+            <label>Talla: </label>
+            <input type="text" class="validate">
+            </div>
+            <div class="input-field col s6">
+            <label>Color: </label>
+            <input type="text" class="validate">
+            </div>
+            <div class="input-field col s6">
+            <label>Precio: </label>
+            <input type="text" class="validate">
+            </div>
+            <div class="input-field col s6">
+                <label>Cantidad: </label>
+                <input type="text" class="validate">
+            </div>
+        </div>
+        <div class="row">
+        </div>
+        </div>
+        <div class="modal-footer">
+        <a class="modal-close btn-flat">Cancelar</a>
+        <a class="btn" (click)="guardarCrearProducto()">Modificar</a>
+        </div>
+    </div>
+    <!-- Termina Modal -->  
+       

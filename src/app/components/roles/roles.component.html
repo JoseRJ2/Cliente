@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+<h1>Roles</h1>
+<div class="row">
+    <div class="input-field col s2">
+        <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearRol" (click)="crearRol()"><i class="material-icons">add</i>Nuevo rol</a></td>
+    </div>
+    <div class="input-field col s3">
+        <input id="last_name" [(ngModel)]="rol.id" type="text" class="validate">
+        <label for="last_name">Buscar Rol(id)</label>
+    </div>
+    <div class="input-field col s3">
+        <a class="waves-effect waves-light btn" (click)="buscarRol(rol.id)"><i class="material-icons left">search</i></a>
+    </div>
+    </div>
+<div class="row">
+    <div class="row" *ngIf="roles != undefined">
+    <div class="col s12">
+        <table class="highlight responsive-table">
+        <thead>
+            <tr>
+            <th>Id</th>
+            <th>Rol</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rol of roles">
+                <td>{{rol.id}}</td>
+                <td>{{rol.nombreRol}}</td>
+                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarRol" (click)="actualizarRol(rol.id)"><i class="material-icons">edit</i></a></td>
+                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarRol" (click)="eliminarRol(rol.id)"><i class="material-icons">delete</i></a></td>
+            </tr>
+        </tbody>
+        </table>
+ <!-- Empieza Modal modificar Rol-->
+ <div id="modalModificarRol" class="modal">
+    <div class="modal-content">
+    <h4>Modificar Rol</h4>
+    <div class="row">
+        <div class="input-field col s12">
+        <label>Nombre: </label>
+        <input type="text" class="validate">
+        </div>
+    </div>
+    <div class="row">
+    </div>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarActualizarRol()">Modificar</a>
+    </div>
+</div>
+<!-- Termina Modal -->
+ <!-- Empieza Modal Eliminar Rol -->
+ <div id="modalEliminarRol" class="modal">
+    <div class="modal-content">
+      <h4>¿Estas seguro de eliminar este rol?</h4>
+      <div class="row">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat">Cancelar</a>
+      <a class="btn" (click)="guardarEliminarRol()">Eliminar</a>
+    </div>
+</div>
+<!-- Termina Modal -->
+<!-- Empieza Modal Crear Rol -->
+<div id="modalCrearRol" class="modal">
+    <div class="modal-content">
+    <h4>Crear Rol</h4>
+    <div class="row">
+        <div class="input-field col s12">
+        <label>Nombre: </label>
+        <input type="text" class="validate">
+        </div>
+    </div>
+    <div class="row">
+    </div>
+    </div>
+    <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarCreaRol()">Crear</a>
+    </div>
+</div>
+<!-- Termina Modal -->
