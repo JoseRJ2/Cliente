@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<h1>Usuarios</h1>
+<!-- nombre-del-componente.component.html -->
+<div class="row" *ngIf="usuarios != undefined">
+    <div class="col s12">
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.usuario}}</td>
+            <td>
+              <a class="waves-effect waves-light btn">
+                <i class="material-icons left">update</i> Editar
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+/* Estilos para la barra de navegación */
+nav {
+    background-color: #3f51b5; /* Cambia esto al color deseado */
+  }
+  
+  /* Estilos para el contenedor principal */
+  .nav-wrapper {
+    padding-left: 20px; /* Ajusta el relleno según sea necesario */
+    padding-right: 20px; /* Ajusta el relleno según sea necesario */
+  }
+  
+  /* Estilos para el logo */
+  .brand-logo {
+    height: 64px; /* Ajusta la altura según sea necesario */
+    margin-top: 8px; /* Ajusta el margen superior según sea necesario */
+  }
+  
+  /* Estilos para los elementos de la lista */
+  #nav-mobile li {
+    margin-right: 20px; /* Ajusta el margen derecho entre elementos según sea necesario */
+  }
+  
+  #nav-mobile a {
+    color: white; /* Cambia el color del texto según sea necesario */
+  }
+  
+  #nav-mobile a:hover {
+    text-decoration: underline; /* Cambia el estilo al pasar el ratón sobre los enlaces según sea necesario */
+}
+  
