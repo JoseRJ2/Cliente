@@ -19,4 +19,8 @@ export class UsuarioService {
   listOne(id_usuario : any) {
     return this.http.get(`${environment.API_URI}/usuarios/${id_usuario}`);
   }
+
+  delete(id_usuario: any){
+    return this.http.delete(`${environment.API_URI}/usuarios/${id_usuario}`);
+  }
 }

@@ -42,9 +42,8 @@ export class UsuariosComponent implements OnInit {
     $("#modalModificarUsuario").modal("close");
     console.log(this.usuario)
   }
-  eliminarUsuario(id_usuario:any)
+  eliminarUsuario()
   {
-    console.log(id_usuario);
     $('#modalEliminarUsuario').modal();
     $("#modalEliminarUsuario").modal("open");
   }
