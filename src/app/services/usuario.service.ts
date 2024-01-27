@@ -23,4 +23,7 @@ export class UsuarioService {
   delete(id_usuario: any){
     return this.http.delete(`${environment.API_URI}/usuarios/delete/${id_usuario}`);
   }
+  update(id_usuario: any, usuario: any){
+    return this.http.put(`${environment.API_URI}/usuarios/update/${id_usuario}`,usuario);
+  }
 }

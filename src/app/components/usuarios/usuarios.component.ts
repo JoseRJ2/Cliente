@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService} from './../../services/usuario.service';
 import { Usuario } from './../../models/usuario';
+import e from 'cors';
 declare var $: any;
 @Component({
   selector: 'app-usuarios',
@@ -11,6 +12,7 @@ export class UsuariosComponent implements OnInit {
   usuarios : Usuario [] = [];
   usuario :Usuario= new Usuario();
   usuarioE: Usuario= new Usuario();
+  usuarioM: Usuario= new Usuario();
   constructor(private usuarioService : UsuarioService,){
     
   }
@@ -33,16 +35,29 @@ export class UsuariosComponent implements OnInit {
   actualizarUsuario(id_usuario:any)
   {
     console.log(id_usuario);
-    //$('#modalModificarUsuario').modal();
+    this.usuarioService.listOne(id_usuario).subscribe((resusuario: any) =>
+    {
+      this.usuarioM = resusuario;  
+    }, err => console.error(err));
     $("#modalModificarUsuario").modal("open");
     console.log("Antes de esto esta el error")
   }
+
   guardarActualizarUsuario()
   {
     console.log("Cerrando");
+    this.usuarioService.update(this.usuarioM.id,this.usuarioM).subscribe(() =>
+    {
+      console.log("usuario actualizado")
+      this.usuarios=[]
+      this.usuarioService.list().subscribe((resusuario:any) =>
+      {
+        this.usuarios= resusuario;
+      }, err => console.error(err));
+    }, err => console.error(err));
     $("#modalModificarUsuario").modal("close");
-    console.log(this.usuario)
   }
+
   eliminarUsuario(usuario:any)
   {
     console.log(usuario)
@@ -50,6 +65,7 @@ export class UsuariosComponent implements OnInit {
     $('#modalEliminarUsuario').modal();
     $("#modalEliminarUsuario").modal("open");
   }
+
   guardarEliminarUsuario()
   {
     console.log("holi")
@@ -66,15 +82,18 @@ export class UsuariosComponent implements OnInit {
     $("#modalEliminarUsuario").modal("close");
     console.log(this.usuario)
   }
+
   crearUsuario(){
     $('#modalCrearUsuario').modal();
     $("#modalCrearUsuario").modal("open");
   }
+
   guardarCrearUsuario()
   {
     console.log("Cerrando");
     $("#modalCrearUsuario").modal("close");
   }
+
   buscarUsuario(usuario:any){
     this.usuarios=[];
     this.usuarioService.listOne(usuario).subscribe((resusuario: any) =>
@@ -84,4 +103,5 @@ export class UsuariosComponent implements OnInit {
     err => console.error(err)
     );
   }
+  
 }

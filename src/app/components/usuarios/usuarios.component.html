@@ -1,87 +1,107 @@
 <app-navbar></app-navbar>
 <h1>Usuarios</h1>
+
 <div class="row">
   <div class="input-field col s2">
-    <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearUsuario" (click)="crearUsuario()"><i class="material-icons">add</i>Nuevo usuario</a></td>
+    <td>
+      <a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearUsuario" (click)="crearUsuario()">
+        <i class="material-icons">add</i>Nuevo usuario
+      </a>
+    </td>
   </div>
   <div class="input-field col s3">
     <input id="last_name" [(ngModel)]="usuario.id" type="text" class="validate">
     <label for="last_name">Buscar Usuario(id)</label>
   </div>
   <div class="input-field col s3">
-    <a class="waves-effect waves-light btn" (click)="buscarUsuario(usuario.id)"><i class="material-icons left">search</i></a>
+    <a class="waves-effect waves-light btn" (click)="buscarUsuario(usuario.id)">
+      <i class="material-icons left">search</i>
+    </a>
   </div>
 </div>
-<div class="row">
-<div class="row" *ngIf="usuarios != undefined">
-  <div class="col s12">
-    <table class="highlight responsive-table">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Usuario</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let usuario of usuarios">
-          <td>{{usuario.nombre}}</td>
-          <td>{{usuario.usuario}}</td>
-          <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarUsuario" (click)="actualizarUsuario(usuario.id)"><i class="material-icons">edit</i></a></td>
-          <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarUsuario" (click)="eliminarUsuario(usuario.id)"><i class="material-icons">delete</i></a></td>
-        </tr>
-      </tbody>
-    </table>
 
-    <!-- Empieza Modal modificar Usuario -->
+<div class="row">
+  <div class="row" *ngIf="usuarios != undefined">
+    <div class="col s12">
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.usuario}}</td>
+            <td>
+              <a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarUsuario" (click)="actualizarUsuario(usuario.id)">
+                <i class="material-icons">edit</i>
+              </a>
+            </td>
+            <td>
+              <a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarUsuario" (click)="eliminarUsuario(usuario.id)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Empieza Modal modificar Usuario --> 
     <div id="modalModificarUsuario" class="modal">
       <div class="modal-content">
         <h4>Modificar Usuario</h4>
         <div class="row">
           <div class="input-field col s12">
-            <label>Nombre: </label>
-            <input type="text" class="validate">
+            <label class="active">Nombre </label>
+            <input [(ngModel)]="usuarioM.nombre" type="text" class="validate">
           </div>
           <div class="input-field col s12">
-            <label>IdRol: </label>
-            <input type="text" class="validate">
+            <label class="active">IdRol </label>
+            <input [(ngModel)]="usuarioM.idRol" type="text" class="validate">
           </div>
           <div class="input-field col s12">
-            <label>Usuario: </label>
-            <input type="text" class="validate">
+            <label class="active">Usuario </label>
+            <input [(ngModel)]="usuarioM.usuario" type="text" class="validate">
           </div>
           <div class="input-field col s6">
-            <label>Contraseña: </label>
-            <input type="text" class="validate">
+            <label class="active">Contraseña </label>
+            <input [(ngModel)]="usuarioM.contrasena" type="text" class="validate">
           </div>
           <div class="input-field col s6">
-            <label>Telefono: </label>
-            <input type="text" class="validate">
+            <label class="active">Telefono </label>
+            <input [(ngModel)]="usuarioM.telefono" type="text" class="validate">
           </div>
         </div>
         <div class="row">
+          <!-- Puedes agregar más contenido si es necesario -->
         </div>
       </div>
       <div class="modal-footer">
         <a class="modal-close btn-flat">Cancelar</a>
         <a class="btn" (click)="guardarActualizarUsuario()">Modificar</a>
       </div>
-    </div>
+    </div>    
     <!-- Termina Modal -->
      <!-- Empieza Modal Eliminar Usuario -->
-     <div id="modalEliminarUsuario" class="modal">
+    <div id="modalEliminarUsuario" class="modal">
       <div class="modal-content">
         <h4>¿Estas seguro de eliminar este usuario?</h4>
         <div class="row">
+          <!-- Puedes agregar contenido adicional si es necesario -->
         </div>
       </div>
       <div class="modal-footer">
         <a class="modal-close btn-flat">Cancelar</a>
         <a class="btn" (click)="guardarEliminarUsuario()">Eliminar</a>
       </div>
-    </div>
+    </div>  
     <!-- Termina Modal -->
+    
     <!-- Empieza Modal Crear Usuario -->
     <div id="modalCrearUsuario" class="modal">
       <div class="modal-content">
@@ -109,13 +129,14 @@
           </div>
         </div>
         <div class="row">
+          <!-- Puedes agregar contenido adicional si es necesario -->
         </div>
       </div>
       <div class="modal-footer">
         <a class="modal-close btn-flat">Cancelar</a>
         <a class="btn" (click)="guardarCrearUsuario()">Crear</a>
       </div>
-    </div>
+    </div>    
     <!-- Termina Modal -->
   </div>
 </div>
