@@ -10,7 +10,8 @@ declare var $: any;
 export class UsuariosComponent implements OnInit {
   usuarios : Usuario [] = [];
   usuario :Usuario= new Usuario();
-  constructor(private usuarioService : UsuarioService){
+  usuarioE: Usuario= new Usuario();
+  constructor(private usuarioService : UsuarioService,){
     
   }
   ngOnInit(): void {
@@ -42,14 +43,26 @@ export class UsuariosComponent implements OnInit {
     $("#modalModificarUsuario").modal("close");
     console.log(this.usuario)
   }
-  eliminarUsuario()
+  eliminarUsuario(usuario:any)
   {
+    console.log(usuario)
+    this.usuarioE.id=usuario;
     $('#modalEliminarUsuario').modal();
     $("#modalEliminarUsuario").modal("open");
   }
   guardarEliminarUsuario()
   {
-    console.log("Cerrando");
+    console.log("holi")
+    console.log(this.usuarioE.id)
+    this.usuarioService.delete(this.usuarioE.id).subscribe(() =>
+    {
+      console.log("usuario eliminado")
+      this.usuarios=[]
+      this.usuarioService.list().subscribe((resusuario:any) =>
+      {
+        this.usuarios= resusuario;
+      }, err => console.error(err));
+    }, err => console.error(err));
     $("#modalEliminarUsuario").modal("close");
     console.log(this.usuario)
   }

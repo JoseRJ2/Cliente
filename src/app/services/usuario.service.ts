@@ -21,6 +21,6 @@ export class UsuarioService {
   }
 
   delete(id_usuario: any){
-    return this.http.delete(`${environment.API_URI}/usuarios/${id_usuario}`);
+    return this.http.delete(`${environment.API_URI}/usuarios/delete/${id_usuario}`);
   }
 }
