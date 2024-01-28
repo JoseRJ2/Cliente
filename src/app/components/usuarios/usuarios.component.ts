@@ -13,6 +13,7 @@ export class UsuariosComponent implements OnInit {
   usuario :Usuario= new Usuario();
   usuarioE: Usuario= new Usuario();
   usuarioM: Usuario= new Usuario();
+  usuarioC: Usuario= new Usuario();
   constructor(private usuarioService : UsuarioService,){
     
   }
@@ -90,7 +91,14 @@ export class UsuariosComponent implements OnInit {
 
   guardarCrearUsuario()
   {
-    console.log("Cerrando");
+    this.usuarioService.create(this.usuarioC).subscribe(() =>
+    {
+      this.usuarios=[]
+      this.usuarioService.list().subscribe((resusuario:any) =>
+      {
+        this.usuarios= resusuario;
+      }, err => console.error(err));
+    }, err => console.error(err));
     $("#modalCrearUsuario").modal("close");
   }
 

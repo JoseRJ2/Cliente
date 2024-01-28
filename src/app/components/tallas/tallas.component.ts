@@ -11,7 +11,9 @@ export class TallasComponent implements OnInit {
 
   tallas : Talla [] = [];
   talla : Talla = new Talla();
-
+  tallaM : Talla = new Talla();
+  tallaE : Talla = new Talla();
+  tallaC : Talla = new Talla();
   constructor(private tallaService : TallasService ){}
   ngOnInit(): void {
     $(document).ready(function(){
@@ -25,25 +27,43 @@ export class TallasComponent implements OnInit {
     
   }
   actualizarTalla(talla:any){
-    $('#modalActualizarTalla').modal();
+    this.tallaM.id=talla;
+    this.tallaService.listOne(this.tallaM.id).subscribe((resTallas: any) => {
+      this.tallaM = resTallas;
+    }, err => console.error(err)
+    );
     $('#modalActualizarTalla').modal('open');
   }
   guardarActualizarTalla(){
     $('#modalActualizarTalla').modal('close');
+    this.tallaService.update(this.tallaM.id,this.tallaM).subscribe(() => {
+      this.tallaService.list().subscribe((resTallas: any) => {
+        this.tallas = resTallas;
+      }, err => console.error(err));
+    }, err => console.error(err));
   }
   eliminarTalla(talla:any){
-    $('#modalEliminarTalla').modal();
+    this.tallaE.id=talla;
     $('#modalEliminarTalla').modal('open');
   }
   guardarEliminarTalla(){
     $('#modalEliminarTalla').modal('close');
+    this.tallaService.delete(this.tallaE.id).subscribe(() => {
+      this.tallaService.list().subscribe((resTallas: any) => {
+        this.tallas = resTallas;
+      }, err => console.error(err));
+    }, err => console.error(err));
   }
   crearTalla(){
-    $('#modalCrearTalla').modal();
     $('#modalCrearTalla').modal('open');
   }
   guardarCrearTalla(){
     $('#modalCrearTalla').modal('close');
+    this.tallaService.create(this.tallaC).subscribe(() => {
+      this.tallaService.list().subscribe((resTallas: any) => {
+        this.tallas = resTallas;
+      }, err => console.error(err));
+    }, err => console.error(err));
   }
   buscarTalla(talla:any){
     this.tallas = [];

@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ProductosService } from './../../services/productos.service';
 import { Producto } from './../../models/productos';
+import e from 'cors';
 declare var $: any;
 @Component({
   selector: 'app-productos',
@@ -10,6 +11,9 @@ declare var $: any;
 export class ProductosComponent implements OnInit {
   productos : Producto [] = [];
   producto :Producto= new Producto();
+  productoM :Producto= new Producto();
+  productoE : Producto = new Producto();
+  productoC : Producto = new Producto();
   constructor(private productoService : ProductosService){
     
   }
@@ -32,44 +36,57 @@ export class ProductosComponent implements OnInit {
   
   actualizarProducto(id_usuario:any)
   {
-    console.log(id_usuario);
-    //$('#modalModificarUsuario').modal();
+    this.productoService.listOne(id_usuario).subscribe((resusuario: any) =>
+    {
+      this.productoM=resusuario;  
+    }, err => console.error(err));
     $("#modalModificarProducto").modal("open");
   }
+
   guardarActualizarProducto()
   {
+    this.productoService.update(this.productoM.id,this.productoM).subscribe(() =>
+    {
+      this.productoService.list().subscribe((resproducto: any) =>
+      {
+        this.productos = resproducto;  
+      }, err => console.error(err));
+    },err => console.error(err));
     $("#modalModificarProducto").modal("close");
   }
+
   eliminarProducto(producto:any){
-    this.producto=producto;
-    $('#modalEliminarProducto').modal();
+    this.productoE.id=producto;
     $("#modalEliminarProducto").modal("open");
   }
-  guardarEliminarProducto(producto:any){
+
+  guardarEliminarProducto(){
     $("#modalEliminarProducto").modal("close");
-    const producto2=this.producto
-    this.productoService.delete(producto2).subscribe((resproducto: any) =>
+    this.productoService.delete(this.productoE.id).subscribe(() =>
     {
-      console.log(producto)
-    }, err => console.error(err)
-    );
-    this.productoService.list().subscribe((resproducto: any) =>
-    {
-      this.productos = resproducto;  
-      //console.log(resproducto);
-      console.log(this.productos)
-    }, err => console.error(err)
-    );
-    console.log("hola")
+      this.productoService.list().subscribe((resproducto: any) =>
+      {
+        this.productos = resproducto;  
+      }, err => console.error(err));
+    }, err => console.error(err));
   }
+
   crearProducto(){
-    $('#modalCrearProducto').modal();
     $("#modalCrearProducto").modal("open");
   }
+
   guardarCrearProducto()
   {
     $("#modalCrearProducto").modal("close");
+    this.productoService.create(this.productoC).subscribe(() =>
+    {
+      this.productoService.list().subscribe((resproducto: any) =>
+      {
+        this.productos = resproducto;  
+      }, err => console.error(err));
+    }, err => console.error(err));
   }
+
   buscarProducto(producto:any){
     this.productos=[];
     this.productoService.listOne(producto).subscribe((resusuario: any) =>
@@ -79,4 +96,5 @@ export class ProductosComponent implements OnInit {
     err => console.error(err)
     );
   }
+
 }

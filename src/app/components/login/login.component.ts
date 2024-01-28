@@ -19,7 +19,7 @@ export class LoginComponent {
       if(resusuario.idRol != -1)
       {
         //localStorage.setItem('correo',this.usuario.correo);
-        this.router.navigate(['inicio']);
+        this.router.navigate(['inicio/productos']);
         console.log("Usuario valido");
       }else{
         console.log("Error, usuario o contrasena no valida");

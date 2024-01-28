@@ -9,3 +9,23 @@ h1 {
     font-size: 1.2em; /* Ajusta el tamaño del texto según tus preferencias */
     /* Otros estilos que desees agregar */
   }
+.container {
+    max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto;  /* Centra el contenedor horizontalmente */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Espaciado superior para separar del contenido superior */
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }

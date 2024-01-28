@@ -14,4 +14,16 @@ export class RolesService {
   listOne(id:any){
    return this.http.get(`${environment.API_URI}/roles/${id}`);
   }
+  
+  create(rol:any){
+    return this.http.post(`${environment.API_URI}/roles/create/`,rol);
+  }
+
+  update(id:any,rol:any){
+    return this.http.put(`${environment.API_URI}/roles/update/${id}`,rol);
+  }
+
+  delete(id:any){
+    return this.http.delete(`${environment.API_URI}/roles/delete/${id}`);
+  }
 }

@@ -14,9 +14,15 @@ export class ProductosService {
     return this.http.get(`${environment.API_URI}/productos/`);
   }
   delete(id:any) {
-    return this.http.delete(`${environment.API_URI}/productos/${id}`);
+    return this.http.delete(`${environment.API_URI}/productos/delete/${id}`);
   }
   listOne(id:any) {
     return this.http.get(`${environment.API_URI}/productos/${id}`);
+  }
+  update(id:any, data:any) {
+    return this.http.put(`${environment.API_URI}/productos/update/${id}`, data);
+  }
+  create(data:any) {
+    return this.http.post(`${environment.API_URI}/productos/create`, data);
   }
 }

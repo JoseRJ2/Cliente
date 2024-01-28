@@ -8,8 +8,11 @@ declare var $: any;
   styleUrl: './roles.component.css'
 })
 export class RolesComponent implements OnInit{
-  roles:Rol [] = [];
-  rol:Rol= new Rol();
+  roles: Rol [] = [];
+  rol: Rol= new Rol();
+  rolM :Rol= new Rol();
+  rolE :Rol= new Rol();
+  rolN :Rol= new Rol();
   constructor(private roleService:RolesService){
   }
   ngOnInit(): void {
@@ -26,25 +29,49 @@ export class RolesComponent implements OnInit{
     );
   }
   actualizarRol(role:any){
-    $("#modalModificarRol").modal()
+    this.rolM.id=role
+    this.roleService.listOne(this.rolM.id).subscribe((resRoles: any) =>
+    {
+      this.rolM=resRoles
+    }, err => console.error(err));
     $("#modalModificarRol").modal("open")
   }
   guardarActualizarRol(){
     $("#modalModificarRol").modal("close")
+    this.roleService.update(this.rolM.id,this.rolM).subscribe(() =>
+    {
+      this.roleService.list().subscribe((resRoles: any) =>
+      {
+        this.roles = resRoles; 
+      }, err => console.error(err));
+    }, err => console.error(err));
   }
   eliminarRol(role:any){
-    $("#modalEliminarRol").modal()
+    this.rolE.id=role
     $("#modalEliminarRol").modal("open")
   }
   guardarEliminarRol(){
     $("#modalEliminarRol").modal("close")
+    this.roleService.delete(this.rolE.id).subscribe(() =>
+    {
+      this.roleService.list().subscribe((resRoles: any) =>
+      {
+        this.roles = resRoles; 
+      }, err => console.error(err));
+    }, err => console.error(err));
   }
   crearRol(){
-    $("#modalCrearRol").modal()
     $("#modalCrearRol").modal("open")
   }
   guardarCreaRol(){
     $("#modalCrearRol").modal("close")
+    this.roleService.create(this.rolN).subscribe(() =>
+    {
+      this.roleService.list().subscribe((resRoles: any) =>
+      {
+        this.roles = resRoles; 
+      }, err => console.error(err));
+    }, err => console.error(err));
   }
   buscarRol(rol:any){
     this.roles=[]

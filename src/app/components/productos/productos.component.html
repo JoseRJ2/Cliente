@@ -1,127 +1,141 @@
-<app-navbar></app-navbar>
-    <h1>Productos</h1>
-    <div class="row">
-    <div class="input-field col s2">
-        <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearProducto" (click)="crearProducto()"><i class="material-icons">add</i>Nuevo usuario</a></td>
+<h1>Productos</h1>
+<div class="row center-align">
+  <div class="input-field col s2">
+    <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearProducto" (click)="crearProducto()"><i class="material-icons">add</i>Nuevo Producto</a></td>
+  </div>
+  <div class="input-field col s3">
+    <input id="last_name" [(ngModel)]="producto.id" type="text" class="validate">
+    <label for="last_name">Buscar Usuario(id)</label>
+  </div>
+  <div class="input-field col s3">
+    <div class="buttonB">
+      <a class="waves-effect waves-light btn" (click)="buscarProducto(producto.id)"><i class="material-icons left">search</i></a>
     </div>
-    <div class="input-field col s3">
-        <input id="last_name" [(ngModel)]="producto.id" type="text" class="validate">
-        <label for="last_name">Buscar Usuario(id)</label>
-    </div>
-    <div class="input-field col s3">
-        <a class="waves-effect waves-light btn" (click)="buscarProducto(producto.id)"><i class="material-icons left">search</i></a>
-    </div>
-    </div>
-    <div class="row">
-    <div class="row" *ngIf="productos != undefined">
+  </div>
+</div>
+<div class="row">
+  <div class="row" *ngIf="productos !== undefined">
     <div class="col s12">
+      <div class="container">
         <table class="highlight responsive-table">
-        <thead>
+          <thead>
             <tr>
-            <th>Nombre</th>
-            <th>Usuario</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Usuario</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             <tr *ngFor="let producto of productos">
-                <td>{{producto.nombre}}</td>
-                <td>{{producto.modelo}}</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarProducto" (click)="actualizarProducto(producto.id)"><i class="material-icons">edit</i></a></td>
-                <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarProducto" (click)="eliminarProducto(producto.id)"><i class="material-icons">delete</i></a></td>
+              <td>{{ producto.id }}</td>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.modelo }}</td>
+              <td>
+                <a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarProducto" (click)="actualizarProducto(producto.id)">
+                  <i class="material-icons">edit</i>
+                </a>
+              </td>
+              <td>
+                <a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarProducto" (click)="eliminarProducto(producto.id)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
             </tr>
-        </tbody>
+          </tbody>
         </table>
-        <!-- Empieza Modal modificar Usuario -->
-        <div id="modalModificarProducto" class="modal">
-            <div class="modal-content">
-            <h4>Modificar Producto</h4>
-            <div class="row">
-                <div class="input-field col s12">
-                <label>Nombre: </label>
-                <input type="text" class="validate">
-                </div>
-                <div class="input-field col s12">
-                <label>Modelo: </label>
-                <input type="text" class="validate">
-                </div>
-                <div class="input-field col s12">
-                <label>Talla: </label>
-                <input type="text" class="validate">
-                </div>
-                <div class="input-field col s6">
-                <label>Color: </label>
-                <input type="text" class="validate">
-                </div>
-                <div class="input-field col s6">
-                <label>Precio: </label>
-                <input type="text" class="validate">
-                </div>
-                <div class="input-field col s6">
-                    <label>Cantidad: </label>
-                    <input type="text" class="validate">
-                </div>
-            </div>
-            <div class="row">
-            </div>
-            </div>
-            <div class="modal-footer">
-            <a class="modal-close btn-flat">Cancelar</a>
-            <a class="btn" (click)="guardarActualizarProducto()">Modificar</a>
-            </div>
-        </div>
-        <!-- Termina Modal -->
-        <!-- Empieza Modal Eliminar Usuario -->
-     <div id="modalEliminarProducto" class="modal">
-        <div class="modal-content">
-          <h4>¿Estas seguro de eliminar este producto?</h4>
-          <div class="row">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="modal-close btn-flat">Cancelar</a>
-          <a class="btn" (click)="guardarEliminarProducto(producto.id)">Eliminar</a>
-        </div>
+      </div>
     </div>
-    <!-- Termina Modal -->
-    <!-- Empieza Modal modificar Usuario -->
-    <div id="modalCrearProducto" class="modal">
-        <div class="modal-content">
-        <h4>Nuevo Producto</h4>
-        <div class="row">
-            <div class="input-field col s12">
-            <label>Nombre: </label>
-            <input type="text" class="validate">
-            </div>
-            <div class="input-field col s12">
-            <label>Modelo: </label>
-            <input type="text" class="validate">
-            </div>
-            <div class="input-field col s12">
-            <label>Talla: </label>
-            <input type="text" class="validate">
-            </div>
-            <div class="input-field col s6">
-            <label>Color: </label>
-            <input type="text" class="validate">
-            </div>
-            <div class="input-field col s6">
-            <label>Precio: </label>
-            <input type="text" class="validate">
-            </div>
-            <div class="input-field col s6">
-                <label>Cantidad: </label>
-                <input type="text" class="validate">
-            </div>
-        </div>
-        <div class="row">
-        </div>
-        </div>
-        <div class="modal-footer">
-        <a class="modal-close btn-flat">Cancelar</a>
-        <a class="btn" (click)="guardarCrearProducto()">Modificar</a>
-        </div>
+  </div>
+</div>
+<!-- Empieza Modal modificar Producto -->
+<div id="modalModificarProducto" class="modal">
+  <div class="modal-content">
+    <h4>Modificar Producto</h4>
+    <div class="row">
+      <div class="input-field col s12">
+        <label class="active">Nombre</label>
+        <input [(ngModel)]="productoM.nombre" type="text" class="validate">
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Modelo</label>
+        <input [(ngModel)]="productoM.modelo" type="text" class="validate">
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Talla</label>
+        <input [(ngModel)]="productoM.idTalla" type="text" class="validate">
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Color</label>
+        <input [(ngModel)]="productoM.color" type="text" class="validate">
+      </div>
+      <div class="input-field col s6">
+        <label class="active">Precio</label>
+        <input [(ngModel)]="productoM.precio" type="text" class="validate">
+      </div>
+      <div class="input-field col s6">
+        <label class="active">Cantidad</label>
+        <input [(ngModel)]="productoM.cantidad" type="text" class="validate">
+      </div>
     </div>
-    <!-- Termina Modal -->  
-       
+    <div class="row">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarActualizarProducto()">Modificar</a>
+  </div>
+</div>
+<!-- Termina Modal -->
+<!-- Empieza Modal Eliminar Producto -->
+<div id="modalEliminarProducto" class="modal">
+  <div class="modal-content">
+    <h4>¿Estás seguro de eliminar este producto?</h4>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarEliminarProducto()">Eliminar</a>
+  </div>
+</div>
+<!-- Termina Modal -->
+<!-- Empieza Modal crear Producto -->
+<div id="modalCrearProducto" class="modal">
+  <div class="modal-content">
+    <h4>Nuevo Producto</h4>
+    <div class="row">
+      <div class="input-field col s12">
+        <label class="active">Nombre</label>
+        <input [(ngModel)]="productoC.nombre" type="text" class="validate">
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Modelo</label>
+        <input [(ngModel)]="productoC.modelo" type="text" class="validate">
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Talla</label>
+        <input [(ngModel)]="productoC.idTalla" type="text" class="validate">
+      </div>
+      <div class="input-field col s12">
+        <label class="active">Color</label>
+        <input [(ngModel)]="productoC.color" type="text" class="validate">
+      </div>
+      <div class="input-field col s6">
+        <label class="active">Precio</label>
+        <input [(ngModel)]="productoC.precio" type="text" class="validate">
+      </div>
+      <div class="input-field col s6">
+        <label class="active">Cantidad</label>
+        <input [(ngModel)]="productoC.cantidad" type="text" class="validate">
+      </div>
+    </div>
+    <div class="row">
+      <!-- Puedes agregar contenido adicional aquí si es necesario -->
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarCrearProducto()">Guardar</a>
+  </div>
+</div>
+<!-- Termina Modal -->

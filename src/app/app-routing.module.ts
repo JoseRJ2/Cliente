@@ -17,22 +17,25 @@ const routes: Routes = [
     component:LoginComponent,
   },{
     path:"inicio",
-    component: InicioComponent
-  },{
-    path:"usuarios",
-    component:UsuariosComponent,
-  },{
-    path:"productos",
-    component: ProductosComponent
-  },{
-    path:"clientes",
-    component:ClientesComponent
-  },{
-    path:"roles",
-    component:RolesComponent
-  },{
-    path:"tallas",
-    component:TallasComponent
+    component: InicioComponent,
+    children:[
+      {
+        path:"usuarios",
+        component:UsuariosComponent
+      },{
+        path:"productos",
+        component:ProductosComponent
+      },{
+        path:"clientes",
+        component:ClientesComponent
+      },{
+        path:"roles",
+        component:RolesComponent
+      },{
+        path:"tallas",
+        component:TallasComponent
+      }
+    ]
   }
 ];
 
