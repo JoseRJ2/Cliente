@@ -8,22 +8,22 @@ export class ClientesService {
 
   constructor(private http:HttpClient) { }
   list() {
-    return this.http.get(`${environment.API_URI}/clientes/`);
+    return this.http.get(`${environment.API_URI}/api/clientes/`);
   }
 
   listOne(id:any) {
-    return this.http.get(`${environment.API_URI}/clientes/${id}`);
+    return this.http.get(`${environment.API_URI}/api/clientes/${id}`);
   }
 
   create(cliente:any) {
-    return this.http.post(`${environment.API_URI}/clientes/create`,cliente);
+    return this.http.post(`${environment.API_URI}/api/clientes/create`,cliente);
   }
 
   update(id:any, cliente:any) {
-    return this.http.put(`${environment.API_URI}/clientes/update/${id}`, cliente);
+    return this.http.put(`${environment.API_URI}/api/clientes/update/${id}`, cliente);
   }
 
   delete(id:any) {
-    return this.http.delete(`${environment.API_URI}/clientes/delete/${id}`);
+    return this.http.delete(`${environment.API_URI}/api/clientes/delete/${id}`);
   }
 }

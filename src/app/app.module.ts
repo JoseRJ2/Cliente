@@ -12,6 +12,13 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { TallasComponent } from './components/tallas/tallas.component';
+import { VentasComponent } from './components/ventas/ventas.component';
+import { ProductosClienteComponent } from './components/productos-cliente/productos-cliente.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarusuarioComponent } from './components/navbarusuario/navbarusuario.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { VentasUsuarioComponent } from './components/ventas-usuario/ventas-usuario.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +30,14 @@ import { TallasComponent } from './components/tallas/tallas.component';
     ProductosComponent,
     ClientesComponent,
     RolesComponent,
-    TallasComponent
+    TallasComponent,
+    VentasComponent,
+    ProductosClienteComponent,
+    FooterComponent,
+    HomeComponent,
+    NavbarusuarioComponent,
+    CarritoComponent,
+    VentasUsuarioComponent
   ],
   imports: [
     BrowserModule,

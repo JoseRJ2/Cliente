@@ -9,22 +9,22 @@ export class TallasService {
   constructor(private http:HttpClient) { }
   
   list() {
-    return this.http.get(`${environment.API_URI}/tallas/`);
+    return this.http.get(`${environment.API_URI}/api/tallas/`);
   }
 
   listOne(id:any){
-    return this.http.get(`${environment.API_URI}/tallas/${id}`);
+    return this.http.get(`${environment.API_URI}/api/tallas/${id}`);
   }
   
   create(talla:any){
-    return this.http.post(`${environment.API_URI}/tallas/create/`,talla);
+    return this.http.post(`${environment.API_URI}/api/tallas/create/`,talla);
   }
 
   update(id:any,talla:any){
-    return this.http.put(`${environment.API_URI}/tallas/update/${id}`,talla);
+    return this.http.put(`${environment.API_URI}/api/tallas/update/${id}`,talla);
   }
 
   delete(id:any){
-    return this.http.delete(`${environment.API_URI}/tallas/delete/${id}`);
+    return this.http.delete(`${environment.API_URI}/api/tallas/delete/${id}`);
   }
 }

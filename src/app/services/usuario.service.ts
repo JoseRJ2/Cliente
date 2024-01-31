@@ -9,26 +9,26 @@ export class UsuarioService {
 
   constructor(private http:HttpClient) { }
   list() {
-    return this.http.get(`${environment.API_URI}/usuarios/`);
+    return this.http.get(`${environment.API_URI}/api/usuarios/`);
   } 
     
-  existe(correo : any, password : any){ 
-    return this.http.post(`${environment.API_URI}/usuarios/ValidarUsuario`,{"correo":correo, "contrasena":password});
+  existe(usuario: any, contrasena: any){ 
+    return this.http.post(`${environment.API_URI}/api/usuarios/ValidarUsuario/`,{"usuario": usuario ,"contrasena": contrasena});
   }
   
   listOne(id_usuario : any) {
-    return this.http.get(`${environment.API_URI}/usuarios/${id_usuario}`);
+    return this.http.get(`${environment.API_URI}/api/usuarios/${id_usuario}`);
   }
 
   delete(id_usuario: any){
-    return this.http.delete(`${environment.API_URI}/usuarios/delete/${id_usuario}`);
+    return this.http.delete(`${environment.API_URI}/api/usuarios/delete/${id_usuario}`);
   }
 
   update(id_usuario: any, usuario: any){
-    return this.http.put(`${environment.API_URI}/usuarios/update/${id_usuario}`,usuario);
+    return this.http.put(`${environment.API_URI}/api/usuarios/update/${id_usuario}`,usuario);
   }
 
   create(usuario: any){
-    return this.http.post(`${environment.API_URI}/usuarios/create`,usuario);
+    return this.http.post(`${environment.API_URI}/api/usuarios/create`,usuario);
   }
 }

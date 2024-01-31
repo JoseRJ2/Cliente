@@ -16,13 +16,14 @@ export class LoginComponent {
   {
     this.usuarioService.existe(this.usuarios.usuario,this.usuarios.contrasena).subscribe((resusuario: any) =>
     {
-      if(resusuario.idRol != -1)
+      console.log(resusuario);
+      if(resusuario[0].idRol == 2)
       {
         //localStorage.setItem('correo',this.usuario.correo);
         this.router.navigate(['inicio/productos']);
         console.log("Usuario valido");
-      }else{
-        console.log("Error, usuario o contrasena no valida");
+      }else if(resusuario[0].idRol == 4){
+        this.router.navigate(['home/productosC']);
       }
     },
     err => console.error(err)

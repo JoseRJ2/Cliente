@@ -1,0 +1,56 @@
+
+h1 {
+    text-align: center;
+}
+/* En tu archivo de estilos CSS */
+.nuevo{
+    font-weight: bold; /* Hace que el texto sea más grueso */
+    color: #000000; /* Cambia el color del texto a azul, puedes ajustar el color según tus preferencias */
+    font-size: 1.2em; /* Ajusta el tamaño del texto según tus preferencias */
+    /* Otros estilos que desees agregar */
+}
+.container {
+    max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto;  /* Centra el contenedor horizontalmente */
+}
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Espaciado superior para separar del contenido superior */
+}
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+  
+  th {
+    background-color: #f2f2f2;
+}
+
+ /* Estilos para el campo de entrada de fecha */
+ .input-field.col.s6 {
+  margin-bottom: 20px; /* Agrega un margen inferior para separar elementos */
+}
+
+/* Estilos para el campo de entrada de texto */
+.input-field.col.s6 input[type="date"] {
+  border: 1px solid #2196F3; /* Borde del campo */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  width: 100%; /* Ancho del campo */
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+/* Estilos para la etiqueta del campo de entrada de fecha */
+.input-field.col.s6 label {
+  color: #2196F3; /* Color del texto de la etiqueta */
+}
+
+/* Estilos para la etiqueta del campo de entrada de fecha cuando está activa (cuando hay texto) */
+.input-field.col.s6 label.active {
+  font-size: 0.8rem; /* Tamaño de la fuente reducido cuando la etiqueta está activa */
+}
+

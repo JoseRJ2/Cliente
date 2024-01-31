@@ -8,22 +8,22 @@ export class RolesService {
 
   constructor(private http:HttpClient) { }
   list() {
-    return this.http.get(`${environment.API_URI}/roles/`);
+    return this.http.get(`${environment.API_URI}/api/roles/`);
   }
 
   listOne(id:any){
-   return this.http.get(`${environment.API_URI}/roles/${id}`);
+   return this.http.get(`${environment.API_URI}/api/roles/${id}`);
   }
   
   create(rol:any){
-    return this.http.post(`${environment.API_URI}/roles/create/`,rol);
+    return this.http.post(`${environment.API_URI}/api/roles/create/`,rol);
   }
 
   update(id:any,rol:any){
-    return this.http.put(`${environment.API_URI}/roles/update/${id}`,rol);
+    return this.http.put(`${environment.API_URI}/api/roles/update/${id}`,rol);
   }
 
   delete(id:any){
-    return this.http.delete(`${environment.API_URI}/roles/delete/${id}`);
+    return this.http.delete(`${environment.API_URI}/api/roles/delete/${id}`);
   }
 }

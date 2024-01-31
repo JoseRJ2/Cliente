@@ -1,0 +1,78 @@
+<h1>CARRITOS DE COMPRAS</h1>
+<div class="row center-align">
+  <div class="input-field col s2">
+    <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearCarrito" (click)="crearCarrito()"><i class="material-icons">add</i>Nuevo Carrito</a></td>
+  </div>
+  <div class="input-field col s3">
+    <input id="last_name" [(ngModel)]="carrito.id" type="text" class="validate">
+    <label for="last_name">Buscar Usuario(id)</label>
+  </div>
+  <div class="input-field col s3">
+    <div class="buttonB">
+      <a class="waves-effect waves-light btn"><i class="material-icons left">search</i></a>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="row" *ngIf="carritos !== undefined">
+      <div class="col s12">
+        <div class="container">
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Id Usuario</th>
+                <th>Id Cliente</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let carrito of carritos">
+                <td>{{ carrito.id }}</td>
+                <td>{{ carrito.idUsuario }}</td>
+                <td>{{ carrito.idCliente }}</td>
+                <td>
+                  <a class="waves-effect waves-light btn modal-trigger" data-target="modalActualizarCliente ">
+                    <i class="material-icons">edit</i>
+                  </a>
+                </td>
+                <td>
+                  <a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarCliente">
+                    <i class="material-icons">delete</i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!-- Empieza crear carritos -->
+<div id="modalCrearCarrito" class="modal">
+  <div class="modal-content">
+    <h4>Nuevo Carrito</h4>
+    <div class="row">
+          <div class="input-field col s12">
+              <label class="active">Id usuario</label>
+              <input [(ngModel)]="carritoNuevo.id" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+              <label class="active">Id cliente</label>
+              <input [(ngModel)]="carritoNuevo.idCliente" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+              <label class="active">Fecha</label>
+              <input [(ngModel)]="carritoNuevo.fechaLimite" type="text" class="validate">
+          </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarCrearCarrito()">Añadir</a>
+  </div>
+</div>
+<!-- Termina Modal -->

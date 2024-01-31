@@ -1,0 +1,29 @@
+<h1>VENTAS</h1>
+<div class="row">
+    <div class="row" *ngIf="ventas !== undefined">
+      <div class="col s12">
+        <div class="container">
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Id Usuario</th>
+                <th>Id Cliente</th>
+                <th>Id pago del carrito</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let venta of ventas">
+                <td>{{ venta.id }}</td>
+                <td>{{ venta.idUsuario }}</td>
+                <td>{{ venta.idCliente }}</td>
+                <td>{{ venta.idPagoCarrito}}</td>
+                <td>{{ venta.fecha  }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

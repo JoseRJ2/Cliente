@@ -1,0 +1,96 @@
+<h1>VENTAS</h1>
+<div class="row">
+    <div class="input-field col s2 offset-s5">
+      <input id="last_name" [(ngModel)]="venta.id" type="text" class="validate">
+      <label for="last_name">Buscar Venta</label>
+    </div>
+    <div class="input-field col s3 offset-s5">
+      <a class="waves-effect waves-light btn" (click)="buscarVenta(venta.id)">
+        <i class="material-icons left">search</i>
+      </a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="row" *ngIf="ventas !== undefined">
+      <div class="col s12">
+        <div class="container">
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Id Pago de Carrito</th>
+                <th>Id Usuario</th>
+                <th>Id Cliente</th>
+                <th>Fecha</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let venta of ventas">
+                <td>{{ venta.id}}</td>
+                <td>{{ venta.idPagoCarrito }}</td>
+                <td>{{ venta.idUsuario }}</td>
+                <td>{{ venta.idCliente}}</td>
+                <td>{{ venta.fecha}}</td>
+                <td>
+                  <a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarVenta" (click)="actualizarVenta(venta.id)">
+                    <i class="material-icons">edit</i>
+                  </a>
+                </td>
+                <td>
+                  <a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarVenta" (click)="eliminarVenta(venta.id)">
+                    <i class="material-icons">delete</i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Empieza Modal modificar Usuario -->
+<div id="modalModificarVenta" class="modal">
+    <div class="modal-content">
+      <h4>Modificar Venta</h4>
+      <div class="row">
+        <div class="input-field col s12">
+          <label class="active">Usuario: </label>
+          <input [(ngModel)]="ventaM.idUsuario" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <label class="active">Cliente: </label>
+          <input [(ngModel)]="ventaM.idCliente" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <label class="active">No.Carrito: </label>
+          <input [(ngModel)]="ventaM.idPagoCarrito" type="text" class="validate">
+        </div>
+        <div class="input-field col s6">
+          <input id="Fecha" [(ngModel)]="ventaM.fecha" type="date" class="validate">
+          <label class="active" for="Fecha">Fecha</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat">Cancelar</a>
+      <a class="btn" (click)="guardarActualizarVenta()">Modificar</a>
+    </div>
+</div>
+<!-- Termina Modal -->
+
+<!-- Empieza Modal Eliminar Usuario -->
+<div id="modalEliminarVenta" class="modal">
+    <div class="modal-content">
+      <h4>¿Estás seguro de eliminar esta venta?</h4>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat">Cancelar</a>
+      <a class="btn" (click)="guardarEliminarVenta()">Eliminar</a>
+    </div>
+</div>  
+<!-- Termina Modal -->

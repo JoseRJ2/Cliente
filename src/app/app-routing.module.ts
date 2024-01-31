@@ -7,6 +7,11 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { TallasComponent } from './components/tallas/tallas.component';
+import { VentasComponent } from './components/ventas/ventas.component';
+import { ProductosClienteComponent } from './components/productos-cliente/productos-cliente.component';
+import { HomeComponent } from './components/home/home.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { VentasUsuarioComponent } from './components/ventas-usuario/ventas-usuario.component';
 const routes: Routes = [
   {
     path:"",
@@ -34,6 +39,24 @@ const routes: Routes = [
       },{
         path:"tallas",
         component:TallasComponent
+      },{
+        path:"ventas",
+        component:VentasComponent
+      }
+    ]
+  },{
+    path:"home",
+    component:HomeComponent,
+    children:[
+      {
+        path:"productosC",
+        component:ProductosClienteComponent
+      },{
+        path:"carritos",
+        component: CarritoComponent
+      },{
+        path:"ventas",
+        component:VentasUsuarioComponent
       }
     ]
   }
