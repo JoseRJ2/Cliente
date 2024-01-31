@@ -30,7 +30,8 @@
                 <th>Id Cliente</th>
                 <th>Estado</th>
                 <th>Añadir Productos al Carrito</th>
-                <th>Eliminar</th>
+                <th>Cancelar Carrito</th>
+                <th>Pagar Carrito</th>
               </tr>
             </thead>
             <tbody>
@@ -48,8 +49,15 @@
                 </td>
                 <td>
                   <div style="text-align: center;">
-                    <a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarCliente">
-                      <i class="material-icons">delete</i>
+                    <a class="waves-effect waves-light btn modal-trigger" data-target="modalCancelarCarrito" (click)="cancelarCarrito(carrito.id)">
+                      <i class="material-icons">remove</i>
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div style="text-align: center;">
+                    <a class="waves-effect waves-light btn modal-trigger" data-target="modalPagarCarrito" (click)="pagarCarrito()">
+                      <i class="material-icons">check</i>
                     </a>
                   </div>
                 </td>
@@ -69,7 +77,7 @@
     <div class="row">
           <div class="input-field col s12">
               <label class="active">Id usuario</label>
-              <input [(ngModel)]="carritoNuevo.id" type="text" class="validate">
+              <input [(ngModel)]="carritoNuevo.idUsuario" type="text" class="validate">
           </div>
           <div class="input-field col s12">
               <label class="active">Id cliente</label>
@@ -131,3 +139,42 @@
   </div>
 </div>
 <!-- Termina Modal -->
+
+<!-- Empieza Modal Cancelar Carrito -->
+<div id="modalCancelarCarrito" class="modal">
+  <div class="modal-content">
+    <h4>¿Estás seguro de cancelar este carrito?</h4>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Atras</a>
+    <a class="btn" (click)="guardarCancelarCarrito()">Cancelar Carrito</a>
+  </div>
+</div>  
+<!-- Termina Modal -->
+
+<!-- Empieza Pagar un  carrito -->
+<div id="modalPagarCarrito" class="modal">
+  <div class="modal-content">
+    <h4>Pagar Carrito</h4>
+    <div class="row">
+          <div class="input-field col s12">
+              <label class="active">Id Carrito</label>
+              <input [(ngModel)]="pagarC.idCarrito" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+            <label class="active">Descuento</label>
+            <input [(ngModel)]="pagarC.descuento" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <input id="Fecha" [(ngModel)]="pagarC.fecha" type="date" class="validate">
+          <label class="active" for="Fecha">Fecha de Pago</label>
+        </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarPagarCarrito()">Pagar Carrito</a>
+  </div>
+</div>
+<!-- Termina Modal -->
+

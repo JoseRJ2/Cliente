@@ -22,4 +22,10 @@ export class CarritoService {
   listcarrito(id:any){
     return this.http.get(`${environment.API_URI}/api/carritos/${id}`);
   }
+  cancelarcarrito(id:any){
+    return this.http.post(`${environment.API_URI}/api/carritos/cancelarcarrito/`,{"id":id});
+  }
+  pagarcarrito(idCarrito:any,descuento:any,fecha:any){
+    return this.http.post(`${environment.API_URI}/api/carritos/pagarcarrito/`,{"idCarrito":idCarrito,"descuento":descuento,"fecha":fecha});
+  }
 }

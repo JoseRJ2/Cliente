@@ -4,6 +4,7 @@ declare var $: any;
 import { Carrito } from './../../models/carritos';
 import { AddProduct } from './../../models/añadirProductos';
 import { ListProducto } from './../../models/listProductos';
+import { PagarCarrito } from './../../models/pagarCarrito';
 import e from 'cors';
 @Component({
   selector: 'app-carrito',
@@ -16,6 +17,8 @@ export class CarritoComponent implements OnInit{
   carritoNuevo: Carrito = new Carrito();
   addProduct: AddProduct = new AddProduct();
   listProductos: ListProducto[] = [];
+  carritoCancelar: Carrito = new Carrito();
+  pagarC: PagarCarrito = new PagarCarrito();
   constructor(private carritoService: CarritoService) { }
   ngOnInit(): void {
     $(document).ready(function()
@@ -65,5 +68,28 @@ export class CarritoComponent implements OnInit{
   }
   guardarListarProductos(){
     $('#modalListarProductos').modal('close');
+  }
+  cancelarCarrito(car:any){
+    this.carritoCancelar.id = car
+    $('#modalCancelarCarrito').modal('open');
+  }
+  guardarCancelarCarrito(){
+    this.carritoService.cancelarcarrito(this.carritoCancelar.id).subscribe(() => {
+      this.carritoService.list().subscribe((data: any) => {
+        this.carritos = data;
+      }, error => console.error(error));
+    }, error => console.error(error));
+    $('#modalCancelarCarrito').modal('close');
+  }
+  pagarCarrito(){
+    $('#modalPagarCarrito').modal('open');
+  } 
+  guardarPagarCarrito(){
+    this.carritoService.pagarcarrito(this.pagarC.idCarrito,this.pagarC.descuento,this.pagarC.fecha).subscribe(() => {
+      this.carritoService.list().subscribe((data: any) => {
+        this.carritos = data;
+      }, error => console.error(error));
+    }, error => console.error(error));
+    $('#modalPagarCarrito').modal('close');
   }
 }
