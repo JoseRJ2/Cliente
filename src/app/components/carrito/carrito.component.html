@@ -3,13 +3,13 @@
   <div class="input-field col s2">
     <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearCarrito" (click)="crearCarrito()"><i class="material-icons">add</i>Nuevo Carrito</a></td>
   </div>
-  <div class="input-field col s3">
+  <div class="input-field col s2">
     <input id="last_name" [(ngModel)]="carrito.id" type="text" class="validate">
-    <label for="last_name">Buscar Usuario(id)</label>
+    <label for="last_name">Buscar Carrito(id)</label>
   </div>
-  <div class="input-field col s3">
+  <div class="input-field col s1">
     <div class="buttonB">
-      <a class="waves-effect waves-light btn"><i class="material-icons left">search</i></a>
+      <a class="waves-effect waves-light btn" (click)="buscarCarrito()"><i class="material-icons left">search</i></a>
     </div>
   </div>
 </div>
@@ -23,7 +23,7 @@
                 <th>Id</th>
                 <th>Id Usuario</th>
                 <th>Id Cliente</th>
-                <th>Editar</th>
+                <th>Añadir Productos</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
@@ -33,8 +33,8 @@
                 <td>{{ carrito.idUsuario }}</td>
                 <td>{{ carrito.idCliente }}</td>
                 <td>
-                  <a class="waves-effect waves-light btn modal-trigger" data-target="modalActualizarCliente ">
-                    <i class="material-icons">edit</i>
+                  <a class="waves-effect waves-light btn modal-trigger"  data-target="modalActualizarCliente ">
+                    <i class="material-icons">add</i>
                   </a>
                 </td>
                 <td>
@@ -58,15 +58,15 @@
     <div class="row">
           <div class="input-field col s12">
               <label class="active">Id usuario</label>
-              <input [(ngModel)]="carritoNuevo.id" type="text" class="validate">
+              <input [(ngModel)]="carritoNuevo.idUsuario" type="text" class="validate">
           </div>
           <div class="input-field col s12">
               <label class="active">Id cliente</label>
               <input [(ngModel)]="carritoNuevo.idCliente" type="text" class="validate">
           </div>
           <div class="input-field col s12">
-              <label class="active">Fecha</label>
-              <input [(ngModel)]="carritoNuevo.fechaLimite" type="text" class="validate">
+            <input id="Fecha" [(ngModel)]="carritoNuevo.fechaLimite" type="date" class="validate">
+            <label class="active" for="Fecha">Fecha Limite de Pago</label>
           </div>
       </div>
   </div>

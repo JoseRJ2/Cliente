@@ -16,4 +16,7 @@ export class CarritoService {
   create(carrito:any){
     return this.http.post(`${environment.API_URI}/api/carritos/create/`,carrito);
   }
+  listOne(id:any){
+    return this.http.get(`${environment.API_URI}/api/carritos/${id}`);
+  }
 }
