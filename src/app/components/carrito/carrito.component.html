@@ -7,10 +7,15 @@
     <input id="last_name" [(ngModel)]="carrito.id" type="text" class="validate">
     <label for="last_name">Buscar Carrito(id)</label>
   </div>
-  <div class="input-field col s1">
+  <div class="input-field col s0">
     <div class="buttonB">
       <a class="waves-effect waves-light btn" (click)="buscarCarrito()"><i class="material-icons left">search</i></a>
     </div>
+  </div>
+  <div class="input-field col s3 offset-s1">
+    <a class="waves-effect waves-light btn modal-trigger" data-target="modalListarProductos" (click)="listarProductos()">Listar Productos de un Carrito
+      <i class="material-icons">list</i>
+    </a>
   </div>
 </div>
 <div class="row">
@@ -23,7 +28,8 @@
                 <th>Id</th>
                 <th>Id Usuario</th>
                 <th>Id Cliente</th>
-                <th>Añadir Productos</th>
+                <th>Estado</th>
+                <th>Añadir Productos al Carrito</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
@@ -32,15 +38,20 @@
                 <td>{{ carrito.id }}</td>
                 <td>{{ carrito.idUsuario }}</td>
                 <td>{{ carrito.idCliente }}</td>
+                <td>{{ carrito.estado    }}</td>
                 <td>
-                  <a class="waves-effect waves-light btn modal-trigger"  data-target="modalActualizarCliente ">
-                    <i class="material-icons">add</i>
-                  </a>
+                  <div style="text-align: center;">
+                    <a class="waves-effect waves-light btn modal-trigger"  data-target="modalAñadirProducto" (click)="anadirProductosCarrito()">
+                      <i class="material-icons">add</i>
+                    </a>
+                  </div>
                 </td>
                 <td>
-                  <a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarCliente">
-                    <i class="material-icons">delete</i>
-                  </a>
+                  <div style="text-align: center;">
+                    <a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarCliente">
+                      <i class="material-icons">delete</i>
+                    </a>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -58,7 +69,7 @@
     <div class="row">
           <div class="input-field col s12">
               <label class="active">Id usuario</label>
-              <input [(ngModel)]="carritoNuevo.idUsuario" type="text" class="validate">
+              <input [(ngModel)]="carritoNuevo.id" type="text" class="validate">
           </div>
           <div class="input-field col s12">
               <label class="active">Id cliente</label>
@@ -73,6 +84,50 @@
   <div class="modal-footer">
     <a class="modal-close btn-flat">Cancelar</a>
     <a class="btn" (click)="guardarCrearCarrito()">Añadir</a>
+  </div>
+</div>
+<!-- Termina Modal -->
+
+<!-- Empieza añadir productos al carrito -->
+<div id="modalAñadirProducto" class="modal">
+  <div class="modal-content">
+    <h4>Añadir Producto al Carrito</h4>
+    <div class="row">
+          <div class="input-field col s12">
+              <label class="active">Id Carrito</label>
+              <input [(ngModel)]="addProduct.idCarrito" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+              <label class="active">Id Producto</label>
+              <input [(ngModel)]="addProduct.idProducto" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+            <label class="active">Cantidad</label>
+            <input [(ngModel)]="addProduct.cantidad" type="text" class="validate">
+          </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarAnadirProductos()">Añadir Producto</a>
+  </div>
+</div>
+<!-- Termina Modal -->
+
+<!-- Empieza listar productos de un  carrito -->
+<div id="modalListarProductos" class="modal">
+  <div class="modal-content">
+    <h4>Listar Productos de un Carrito</h4>
+    <div class="row">
+          <div class="input-field col s12">
+              <label class="active">Id Carrito</label>
+              <input [(ngModel)]="carrito.id" type="text" class="validate">
+          </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancelar</a>
+    <a class="btn" (click)="guardarListarProductos()">Listar</a>
   </div>
 </div>
 <!-- Termina Modal -->
