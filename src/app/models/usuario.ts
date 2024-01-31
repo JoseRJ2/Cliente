@@ -9,9 +9,9 @@ export class Usuario{
     constructor() {
         this.id = 0;
         this.nombre = '';
-        this.usuario = 'Vaxleria';
+        this.usuario = 'PEEP2003';
         this.idRol = 0;
-        this.contrasena = 'HOLAP:)';
+        this.contrasena = 'Robles2003';
         this.telefono = '';
     }
 }
