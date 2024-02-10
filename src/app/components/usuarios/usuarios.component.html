@@ -7,7 +7,7 @@
       </a>
     </td>
   </div>
-  <div class="input-field col s3">
+  <div class="input-field col s1">
     <input id="last_name" [(ngModel)]="usuario.id" type="text" class="validate">
     <label for="last_name">Buscar Usuario(id)</label>
   </div>
@@ -27,7 +27,10 @@
             <tr>
               <th>Id</th>
               <th>Nombre</th>
+              <th>Rol</th>
               <th>Usuario</th>
+              <th>Contraseña</th>
+              <th>Telefono</th>
               <th>Editar</th>
               <th>Eliminar</th>
             </tr>
@@ -36,7 +39,10 @@
             <tr *ngFor="let usuario of usuarios">
               <td>{{ usuario.id }}</td>
               <td>{{ usuario.nombre }}</td>
+              <td>{{ usuario.Rol }}</td>
               <td>{{ usuario.usuario }}</td>
+              <td>{{ usuario.contrasena }}</td>
+              <td>{{ usuario.telefono }}</td>
               <td>
                 <a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarUsuario" (click)="actualizarUsuario(usuario.id)">
                   <i class="material-icons">edit</i>
@@ -65,8 +71,8 @@
         <input [(ngModel)]="usuarioM.nombre" type="text" class="validate">
       </div>
       <div class="input-field col s12">
-        <label class="active">IdRol </label>
-        <input [(ngModel)]="usuarioM.idRol" type="text" class="validate">
+        <label class="active">Rol </label>
+        <input [(ngModel)]="usuarioM.Rol" type="text" class="validate">
       </div>
       <div class="input-field col s12">
         <label class="active">Usuario </label>
@@ -110,8 +116,8 @@
         <input [(ngModel)]="usuarioC.nombre" type="text" class="validate">
       </div>
       <div class="input-field col s12">
-        <label class="active">IdRol </label>
-        <input [(ngModel)]="usuarioC.idRol" type="text" class="validate">
+        <label class="active">Rol </label>
+        <input [(ngModel)]="usuarioC.Rol" type="text" class="validate">
       </div>
       <div class="input-field col s12">
         <label class="active">Usuario </label>

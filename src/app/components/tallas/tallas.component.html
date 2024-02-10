@@ -3,9 +3,9 @@
     <div class="input-field col s2">
         <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearTalla" (click)="crearTalla()"><i class="material-icons">add</i>Nueva Talla</a></td>
     </div>
-    <div class="input-field col s3">
+    <div class="input-field col s1">
         <input id="last_name" [(ngModel)]="talla.id" type="text" class="validate">
-        <label for="last_name">Buscar Rol(id)</label>
+        <label for="last_name">Buscar talla(id)</label>
     </div>
     <div class="input-field col s3">
         <a class="waves-effect waves-light btn" (click)="buscarTalla(talla.id)"><i class="material-icons left">search</i></a>

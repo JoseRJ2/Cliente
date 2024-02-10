@@ -22,7 +22,8 @@ export class VentasComponent implements OnInit{
     });
     this.ventaService.list().subscribe((resusuario: any) =>
     {
-      this.ventas = resusuario;  
+      this.ventas = resusuario;
+      console.log(this.ventas);
     },
     err => console.error(err)
     );

@@ -3,7 +3,7 @@
   <div class="input-field col s2">
     <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearProducto" (click)="crearProducto()"><i class="material-icons">add</i>Nuevo Producto</a></td>
   </div>
-  <div class="input-field col s3">
+  <div class="input-field col s1">
     <input id="last_name" [(ngModel)]="producto.id" type="text" class="validate">
     <label for="last_name">Buscar Usuario(id)</label>
   </div>
@@ -22,7 +22,11 @@
             <tr>
               <th>Id</th>
               <th>Nombre</th>
-              <th>Usuario</th>
+              <th>Modelo</th>
+              <th>Talla</th>
+              <th>Color</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
               <th>Editar</th>
               <th>Eliminar</th>
             </tr>
@@ -32,6 +36,10 @@
               <td>{{ producto.id }}</td>
               <td>{{ producto.nombre }}</td>
               <td>{{ producto.modelo }}</td>
+              <td>{{ producto.Talla}}</td>
+              <td>{{producto.color}}</td>
+              <td>{{producto.precio}}</td>
+              <td>{{producto.cantidad}}</td>
               <td>
                 <a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarProducto" (click)="actualizarProducto(producto.id)">
                   <i class="material-icons">edit</i>
@@ -64,7 +72,7 @@
       </div>
       <div class="input-field col s12">
         <label class="active">Talla</label>
-        <input [(ngModel)]="productoM.idTalla" type="text" class="validate">
+        <input [(ngModel)]="productoM.Talla" type="text" class="validate">
       </div>
       <div class="input-field col s12">
         <label class="active">Color</label>
@@ -114,7 +122,7 @@
       </div>
       <div class="input-field col s12">
         <label class="active">Talla</label>
-        <input [(ngModel)]="productoC.idTalla" type="text" class="validate">
+        <input [(ngModel)]="productoC.Talla" type="text" class="validate">
       </div>
       <div class="input-field col s12">
         <label class="active">Color</label>

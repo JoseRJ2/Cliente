@@ -3,7 +3,7 @@
   <div class="input-field col s2">
     <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearCliente" (click)="agregarCliente()"><i class="material-icons">add</i>Nuevo Cliente</a></td>
   </div>
-  <div class="input-field col s3">
+  <div class="input-field col s1">
     <input id="last_name" [(ngModel)]="cliente.id" type="text" class="validate">
     <label for="last_name">Buscar Cliente(id)</label>
   </div>
@@ -21,7 +21,9 @@
               <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Usuario</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Correo</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
               </tr>
@@ -30,7 +32,9 @@
               <tr *ngFor="let cliente of clientes">
                 <td>{{ cliente.id }}</td>
                 <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.direccion }}</td>
                 <td>{{ cliente.telefono }}</td>
+                <td>{{ cliente.correo }}</td>
                 <td>
                   <a class="waves-effect waves-light btn modal-trigger" data-target="modalActualizarCliente" (click)="actualizarCliente(cliente.id)">
                     <i class="material-icons">edit</i>

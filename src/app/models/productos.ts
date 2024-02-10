@@ -2,7 +2,7 @@ export class Producto{
     id: number;
     nombre : string;
     modelo: string;
-    idTalla: number;
+    Talla: string;
     color: string;
     precio: number;
     cantidad: number;
@@ -11,7 +11,7 @@ export class Producto{
         this.id = 0;
         this.nombre = '';
         this.modelo = '';
-        this.idTalla = 0;
+        this.Talla = '';
         this.color = '';
         this.precio = 0;
         this.cantidad = 0;

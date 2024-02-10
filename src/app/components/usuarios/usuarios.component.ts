@@ -85,6 +85,8 @@ export class UsuariosComponent implements OnInit {
   }
 
   crearUsuario(){
+    this.usuarioC.usuario="";
+    this.usuarioC.contrasena="";
     $('#modalCrearUsuario').modal();
     $("#modalCrearUsuario").modal("open");
   }

@@ -1,7 +1,7 @@
 export class Usuario{
     id: number;
     nombre : string;
-    idRol: number;
+    Rol: string;
     usuario: string;
     contrasena: string;
     telefono: string;
@@ -10,7 +10,7 @@ export class Usuario{
         this.id = 0;
         this.nombre = '';
         this.usuario = 'PEEP2003';
-        this.idRol = 0;
+        this.Rol = '';
         this.contrasena = 'Robles2003';
         this.telefono = '';
     }

@@ -21,9 +21,10 @@
               <tr>
                 <th>Id</th>
                 <th>Id Pago de Carrito</th>
-                <th>Id Usuario</th>
-                <th>Id Cliente</th>
+                <th>Vendedor</th>
+                <th>Cliente</th>
                 <th>Fecha</th>
+                <th>Total</th>
                 <th>Modificar</th>
                 <th>Eliminar</th>
               </tr>
@@ -32,9 +33,10 @@
               <tr *ngFor="let venta of ventas">
                 <td>{{ venta.id}}</td>
                 <td>{{ venta.idPagoCarrito }}</td>
-                <td>{{ venta.idUsuario }}</td>
-                <td>{{ venta.idCliente}}</td>
+                <td>{{ venta.Usuario }}</td>
+                <td>{{ venta.Cliente}}</td>
                 <td>{{ venta.fecha}}</td>
+                <td>{{ venta.total}}</td>
                 <td>
                   <a class="waves-effect waves-light btn modal-trigger" data-target="modalModificarVenta" (click)="actualizarVenta(venta.id)">
                     <i class="material-icons">edit</i>
@@ -60,11 +62,11 @@
       <div class="row">
         <div class="input-field col s12">
           <label class="active">Usuario: </label>
-          <input [(ngModel)]="ventaM.idUsuario" type="text" class="validate">
+          <input [(ngModel)]="ventaM.Usuario" type="text" class="validate">
         </div>
         <div class="input-field col s12">
           <label class="active">Cliente: </label>
-          <input [(ngModel)]="ventaM.idCliente" type="text" class="validate">
+          <input [(ngModel)]="ventaM.Cliente" type="text" class="validate">
         </div>
         <div class="input-field col s12">
           <label class="active">No.Carrito: </label>
