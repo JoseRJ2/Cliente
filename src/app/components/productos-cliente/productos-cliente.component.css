@@ -1,5 +1,43 @@
-.imagen-vestido {
-    width: 20px; /* Puedes ajustar el valor según tus necesidades */
-    height: 400px; /* Esto asegura que la imagen mantenga su proporción original */
-}
-  
+.body {
+    font-family: Arial, sans-serif;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  .row {
+    margin: 20px auto;
+  }
+  .input-field {
+    margin-bottom: 20px;
+  }
+  .buttonB {
+    text-align: center;
+  }
+  .buttonB a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .buttonB a:hover {
+    background-color: #0056b3;
+  }
+  table.highlight {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table.highlight th,
+  table.highlight td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  table.highlight th {
+    background-color: #f2f2f2;
+  }
+  table.highlight tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }

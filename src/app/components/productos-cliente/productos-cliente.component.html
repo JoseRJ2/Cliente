@@ -1,46 +1,44 @@
+<h1>Productos</h1>
+<div class="row center-align">
+  <div class="input-field col s1 offset-s5">
+    <input id="last_name" type="text" class="validate">
+    <label class="active" for="last_name">Buscar Productos(id)</label>
+  </div>
+  <div class="input-field col s1">
+    <div class="buttonB">
+      <a class="waves-effect waves-light btn"><i class="material-icons left">search</i></a>
+    </div>
+  </div>
+</div>
 <div class="row">
-  <div class="col s5 m2">
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../assets/images/imgVestido.webp" class="imagen-vestido">
-        <span class="card-title">Vestido Exclusivo</span>
-      </div>
-      <div class="card-content">
-        <p>
-          ¡Hacer a todos boquiabiertos es muy fácil cuando tienes un look romántico como el vestido largo negro sin tirantes y escalonado Seriously Sensational de Lulus! La ligera gasa tejida plisada da forma a este coqueto vestido que presenta un corpiño sin tirantes (con tiras antideslizantes ocultas) y un escote en forma de corazón.</p>
-      </div>
-      <div style="text-align: right;">
-        <a class="waves-effect waves-light btn modal-trigger" data-target="modalAñadirProductos" (click)="agregarProductoCarrito()">
-          <i class="material-icons">add</i>
-        </a>
+  <div class="row" *ngIf="productos !== undefined">
+    <div class="col s12">
+      <div class="container">
+        <table class="highlight responsive-table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Modelo</th>
+              <th>Talla</th>
+              <th>Color</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos">
+              <td>{{ producto.id }}</td>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.modelo }}</td>
+              <td>{{ producto.Talla}}</td>
+              <td>{{producto.color}}</td>
+              <td>{{producto.precio}}</td>
+              <td>{{producto.cantidad}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Empieza Modal crear Producto -->
-<div id="modalAñadirProductos" class="modal">
-  <div class="modal-content">
-    <h4>Agregar Producto al Carrito</h4>
-    <div class="row">
-      <div class="input-field col s12">
-        <label class="active">Id del Carrito</label>
-        <input [(ngModel)]="addProduct.idCarrito" type="text" class="validate">
-      </div>
-      <div class="input-field col s12">
-        <label class="active">Id Producto</label>
-        <input [(ngModel)]="addProduct.Producto" type="text" class="validate">
-      </div>
-      <div class="input-field col s12">
-        <label class="active">Cantidad</label>
-        <input [(ngModel)]="addProduct.cantidad" type="text" class="validate">
-      </div>
-  </div>
-  <div class="modal-footer">
-    <a class="modal-close btn-flat">Cancelar</a>
-    <a class="btn" (click)="guardarAgregarProductoCarrito()">Guardar</a>
-  </div>
-</div>
-<!-- Termina Modal -->
-
-

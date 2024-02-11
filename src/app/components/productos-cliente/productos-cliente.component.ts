@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AddProduct } from './../../models/añadirProductos';
+import { Producto } from './../../models/productos';
+import { ProductosService } from './../../services/productos.service';
 declare var $: any;
 @Component({
   selector: 'app-productos-cliente',
@@ -7,9 +8,9 @@ declare var $: any;
   styleUrl: './productos-cliente.component.css'
 })
 export class ProductosClienteComponent implements OnInit{
-  addProduct : AddProduct = new AddProduct();
-  constructor(){
+  constructor(private productosService: ProductosService){
   }
+  productos: Producto[] = [];
   ngOnInit(): void {
     $(document).ready(function(){
       $('.dropdown-trigger').dropdown();
@@ -18,12 +19,8 @@ export class ProductosClienteComponent implements OnInit{
       $('.modal').modal();
 
     }
-  }
-  agregarProductoCarrito(){
-    $("#modalAñadirProductos").modal("open");
-  }
-
-  guardarAgregarProductoCarrito(){
-    $("#modalAñadirProductos").modal("close");
+    this.productosService.list().subscribe((data: any) => {
+      this.productos = data;
+    });
   }
 }
