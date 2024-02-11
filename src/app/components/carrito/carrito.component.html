@@ -3,9 +3,9 @@
   <div class="input-field col s2">
     <td><a class="waves-effect waves-light btn modal-trigger" data-target="modalCrearCarrito" (click)="crearCarrito()"><i class="material-icons">add</i>Nuevo Carrito</a></td>
   </div>
-  <div class="input-field col s2">
+  <div class="input-field col s1">
     <input id="last_name" [(ngModel)]="carrito.id" type="text" class="validate">
-    <label for="last_name">Buscar Carrito(id)</label>
+    <label class="active">Buscar Carrito(id)</label>
   </div>
   <div class="input-field col s0">
     <div class="buttonB">
@@ -26,8 +26,9 @@
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Id Usuario</th>
-                <th>Id Cliente</th>
+                <th>Usuario</th>
+                <th>Cliente</th>
+                <th>Fecha Limite</th>
                 <th>Estado</th>
                 <th>Añadir Productos al Carrito</th>
                 <th>Cancelar Carrito</th>
@@ -37,8 +38,9 @@
             <tbody>
               <tr *ngFor="let carrito of carritos">
                 <td>{{ carrito.id }}</td>
-                <td>{{ carrito.idUsuario }}</td>
-                <td>{{ carrito.idCliente }}</td>
+                <td>{{ carrito.Usuario }}</td>
+                <td>{{ carrito.Cliente}}</td>
+                <td>{{ carrito.fechaLimite}}</td>
                 <td>{{ carrito.estado    }}</td>
                 <td>
                   <div style="text-align: center;">
@@ -76,12 +78,12 @@
     <h4>Nuevo Carrito</h4>
     <div class="row">
           <div class="input-field col s12">
-              <label class="active">Id usuario</label>
-              <input [(ngModel)]="carritoNuevo.idUsuario" type="text" class="validate">
+              <label class="active">usuario</label>
+              <input [(ngModel)]="carritoNuevo.Usuario" type="text" class="validate">
           </div>
           <div class="input-field col s12">
-              <label class="active">Id cliente</label>
-              <input [(ngModel)]="carritoNuevo.idCliente" type="text" class="validate">
+              <label class="active">cliente</label>
+              <input [(ngModel)]="carritoNuevo.Cliente" type="text" class="validate">
           </div>
           <div class="input-field col s12">
             <input id="Fecha" [(ngModel)]="carritoNuevo.fechaLimite" type="date" class="validate">
@@ -106,8 +108,8 @@
               <input [(ngModel)]="addProduct.idCarrito" type="text" class="validate">
           </div>
           <div class="input-field col s12">
-              <label class="active">Id Producto</label>
-              <input [(ngModel)]="addProduct.idProducto" type="text" class="validate">
+              <label class="active">Producto</label>
+              <input [(ngModel)]="addProduct.Producto" type="text" class="validate">
           </div>
           <div class="input-field col s12">
             <label class="active">Cantidad</label>

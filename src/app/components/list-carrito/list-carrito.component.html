@@ -1,0 +1,42 @@
+<h1>LISTAR PRODUCTOS DE UN CARRITO</h1>
+<div class="row center-align">
+  <div class="input-field col s1">
+    <input id="last_name"  [(ngModel)]="carrito.id" type="text" class="validate">
+    <label class="active">Buscar Productos(id)</label>
+  </div>
+  <div class="input-field col s1">
+    <div class="buttonB">
+      <a class="waves-effect waves-light btn" (click)="buscarProductos(carrito.id)"><i class="material-icons left">search</i></a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="row" *ngIf="listarCarrito !== undefined">
+    <div class="col s12">
+      <div class="container">
+        <table class="highlight responsive-table">
+          <thead>
+            <tr>
+              <th>Id Carrito</th>
+              <th>Estado de Pago</th>
+              <th>Producto</th>
+              <th>Modelo</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let lista of listarCarrito">
+              <td>{{ lista.id  }}</td>
+              <td>{{ lista.estado }}</td>
+              <td>{{ lista.nombre }}</td>
+              <td>{{ lista.modelo }}</td>
+              <td>{{ lista.cantidad}}</td>
+              <td>{{ lista.precio}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

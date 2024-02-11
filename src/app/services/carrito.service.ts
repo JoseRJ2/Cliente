@@ -7,8 +7,8 @@ import {environment} from '../environments/environment'
 export class CarritoService {
 
   constructor(private http: HttpClient) { }
-  agregar(carrito:any,producto:any,cantidad:any){
-    return this.http.post(`${environment.API_URI}/api/carritos/agregar/`,{"idCarrito":carrito,"idProducto":producto,"cantidad":cantidad});
+  agregar(carrito: any){
+    return this.http.post(`${environment.API_URI}/api/carritos/agregar/`,carrito);
   }
   list(){
     return this.http.get(`${environment.API_URI}/api/carritos/`);

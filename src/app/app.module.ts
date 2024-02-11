@@ -19,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarusuarioComponent } from './components/navbarusuario/navbarusuario.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { VentasUsuarioComponent } from './components/ventas-usuario/ventas-usuario.component';
+import { ListCarritoComponent } from './components/list-carrito/list-carrito.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { VentasUsuarioComponent } from './components/ventas-usuario/ventas-usuar
     HomeComponent,
     NavbarusuarioComponent,
     CarritoComponent,
-    VentasUsuarioComponent
+    VentasUsuarioComponent,
+    ListCarritoComponent
   ],
   imports: [
     BrowserModule,

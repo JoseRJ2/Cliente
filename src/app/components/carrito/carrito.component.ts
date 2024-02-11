@@ -27,6 +27,7 @@ export class CarritoComponent implements OnInit{
     });
     this.carritoService.list().subscribe((data: any) => {
       this.carritos = data;
+      console.log(this.carritos)
     });
   }
   crearCarrito(){
@@ -52,7 +53,7 @@ export class CarritoComponent implements OnInit{
     $('#modalAñadirProductos').modal('open');
   }
   guardarAnadirProductos(){
-    this.carritoService.agregar(this.addProduct.idCarrito,this.addProduct.idProducto,this.addProduct.cantidad).subscribe(() => {
+    this.carritoService.agregar(this.addProduct).subscribe(() => {
       this.carritoService.list().subscribe((data: any) => {
         this.carritos = data;
       }, error => console.error(error));
