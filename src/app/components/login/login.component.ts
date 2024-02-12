@@ -19,11 +19,12 @@ export class LoginComponent {
       console.log(resusuario);
       if(resusuario[0].idRol == 2)
       {
-        //localStorage.setItem('correo',this.usuario.correo);
+        localStorage.setItem('Rol',resusuario[0].idRol);
         this.router.navigate(['inicio/productos']);
         console.log("Usuario valido");
       }else if(resusuario[0].idRol == 4){
         this.router.navigate(['home/productosC']);
+        localStorage.setItem('Rol',resusuario[0].idRol);
       }
     },
     err => console.error(err)
