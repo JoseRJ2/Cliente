@@ -7,6 +7,10 @@ import { AddProduct } from './../../models/añadirProductos';
 import { ListProducto } from './../../models/listProductos';
 import { PagarCarrito } from './../../models/pagarCarrito';
 import { Producto } from './../../models/productos';
+import { Usuario } from './../../models/usuario';
+import { UsuarioService } from './../../services/usuario.service';
+import { Cliente } from './../../models/clientes';
+import { ClientesService } from './../../services/clientes.service';
 import e from 'cors';
 @Component({
   selector: 'app-carrito',
@@ -14,6 +18,8 @@ import e from 'cors';
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent implements OnInit{
+  clientes: Cliente[] = [];
+  usuarios: Usuario[] = [];
   carritos: Carrito[] = [];
   productos: Producto[] = [];
   carrito: Carrito = new Carrito();
@@ -22,7 +28,7 @@ export class CarritoComponent implements OnInit{
   listProductos: ListProducto[] = [];
   carritoCancelar: Carrito = new Carrito();
   pagarC: PagarCarrito = new PagarCarrito();
-  constructor(private carritoService: CarritoService,private productosService : ProductosService) { }
+  constructor(private carritoService: CarritoService,private productosService : ProductosService, private clientesService : ClientesService, private usuarioService: UsuarioService) { }
   ngOnInit(): void {
     $(document).ready(function()
     {
@@ -34,6 +40,12 @@ export class CarritoComponent implements OnInit{
     });
   }
   crearCarrito(){
+    this.clientesService.list().subscribe((data: any) => {
+      this.clientes = data;
+    }, error => console.error(error));
+    this.usuarioService.list().subscribe((data: any) => {
+      this.usuarios = data;
+    }, error => console.error(error));
     $('#modalCrearCarrito').modal('open');
   }
 
