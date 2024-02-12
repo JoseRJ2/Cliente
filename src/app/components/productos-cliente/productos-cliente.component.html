@@ -1,12 +1,12 @@
 <h1>Productos</h1>
 <div class="row center-align">
   <div class="input-field col s1 offset-s5">
-    <input id="last_name" type="text" class="validate">
+    <input id="last_name" [(ngModel)]="producto.id" type="text" class="validate">
     <label class="active" for="last_name">Buscar Productos(id)</label>
   </div>
   <div class="input-field col s1">
     <div class="buttonB">
-      <a class="waves-effect waves-light btn"><i class="material-icons left">search</i></a>
+      <a class="waves-effect waves-light btn" (click)="buscarProducto(producto.id)"><i class="material-icons left">search</i></a>
     </div>
   </div>
 </div>
