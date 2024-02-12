@@ -14,6 +14,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { VentasUsuarioComponent } from './components/ventas-usuario/ventas-usuario.component';
 import { ListCarritoComponent } from './components/list-carrito/list-carrito.component';
 import { CarritoAdminComponent } from './components/carrito-admin/carrito-admin.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
 const routes: Routes = [
   {
     path:"",
@@ -54,6 +55,9 @@ const routes: Routes = [
     component:HomeComponent,
     children:[
       {
+        path:"catalogo",
+        component: CatalogoComponent
+      },{
         path:"productosC",
         component:ProductosClienteComponent
       },{

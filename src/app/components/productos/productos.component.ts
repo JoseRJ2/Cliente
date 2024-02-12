@@ -1,7 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { ProductosService } from './../../services/productos.service';
 import { Producto } from './../../models/productos';
-import e from 'cors';
+import { Talla } from './../../models/tallas';
+import { TallasService } from './../../services/tallas.service';
 declare var $: any;
 @Component({
   selector: 'app-productos',
@@ -10,12 +11,12 @@ declare var $: any;
 })
 export class ProductosComponent implements OnInit {
   productos : Producto [] = [];
+  tallas : Talla [] = [];
   producto :Producto= new Producto();
   productoM :Producto= new Producto();
   productoE : Producto = new Producto();
   productoC : Producto = new Producto();
-  constructor(private productoService : ProductosService){
-    
+  constructor(private productoService : ProductosService, private tallasService : TallasService){  
   }
   ngOnInit(): void {
     $(document).ready(function()
@@ -39,6 +40,10 @@ export class ProductosComponent implements OnInit {
     this.productoService.listOne(id_usuario).subscribe((resusuario: any) =>
     {
       this.productoM=resusuario;  
+    }, err => console.error(err));
+    this.tallasService.list().subscribe((restalla: any) =>
+    {
+      this.tallas = restalla;  
     }, err => console.error(err));
     $("#modalModificarProducto").modal("open");
   }
@@ -72,6 +77,11 @@ export class ProductosComponent implements OnInit {
   }
 
   crearProducto(){
+    this.productoC = new Producto();
+    this.tallasService.list().subscribe((restalla: any) =>
+    {
+      this.tallas = restalla;  
+    }, err => console.error(err));
     $("#modalCrearProducto").modal("open");
   }
 

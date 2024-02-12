@@ -104,7 +104,11 @@
           </div>
           <div class="input-field col s12">
               <label class="active">Producto</label>
-              <input [(ngModel)]="addProduct.Producto" type="text" class="validate">
+              <select [(ngModel)]='addProduct.Producto' class="browser-default">
+                <option *ngFor="let producto of productos" [value]="producto.nombre">
+                  {{producto.nombre}}
+                </option>
+              </select>
           </div>
           <div class="input-field col s12">
             <label class="active">Cantidad</label>

@@ -66,6 +66,7 @@ export class ClientesComponent implements OnInit {
   }
   agregarCliente()
   {
+    this.clienteA=new Cliente();
     $("#modalAgregarCliente").modal("open");
   }
   guardarAgregarCliente()

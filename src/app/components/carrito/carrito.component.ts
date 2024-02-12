@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from './../../services/carrito.service';
+import { ProductosService } from './../../services/productos.service';
 declare var $: any;
 import { Carrito } from './../../models/carritos';
 import { AddProduct } from './../../models/añadirProductos';
 import { ListProducto } from './../../models/listProductos';
 import { PagarCarrito } from './../../models/pagarCarrito';
+import { Producto } from './../../models/productos';
 import e from 'cors';
 @Component({
   selector: 'app-carrito',
@@ -13,13 +15,14 @@ import e from 'cors';
 })
 export class CarritoComponent implements OnInit{
   carritos: Carrito[] = [];
+  productos: Producto[] = [];
   carrito: Carrito = new Carrito();
   carritoNuevo: Carrito = new Carrito();
   addProduct: AddProduct = new AddProduct();
   listProductos: ListProducto[] = [];
   carritoCancelar: Carrito = new Carrito();
   pagarC: PagarCarrito = new PagarCarrito();
-  constructor(private carritoService: CarritoService) { }
+  constructor(private carritoService: CarritoService,private productosService : ProductosService) { }
   ngOnInit(): void {
     $(document).ready(function()
     {
@@ -51,6 +54,9 @@ export class CarritoComponent implements OnInit{
   } 
   anadirProductosCarrito(carrito: any){
     this.addProduct.idCarrito = carrito;
+    this.productosService.list().subscribe((data: any) => {
+      this.productos = data;
+    }, error => console.error(error));
     $('#modalAñadirProductos').modal('open');
   }
   guardarAnadirProductos(){

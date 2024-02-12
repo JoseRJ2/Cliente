@@ -61,6 +61,7 @@ export class RolesComponent implements OnInit{
     }, err => console.error(err));
   }
   crearRol(){
+    this.rolN=new Rol()
     $("#modalCrearRol").modal("open")
   }
   guardarCreaRol(){

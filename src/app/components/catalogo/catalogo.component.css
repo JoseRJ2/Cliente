@@ -1,0 +1,10 @@
+.carousel {
+    width: 70%; /* Ancho del carrusel */
+    margin: auto; /* Centra el carrusel horizontalmente */
+    overflow: hidden; /* Oculta el contenido que excede el ancho del carrusel */
+  }
+
+  .carousel-item img {
+    width: 100%; /* Ajusta el ancho de las imágenes al 100% del contenedor */
+    height: auto; /* Ajusta automáticamente la altura para mantener la proporción */
+  }

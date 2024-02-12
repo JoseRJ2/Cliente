@@ -55,6 +55,7 @@ export class TallasComponent implements OnInit {
     }, err => console.error(err));
   }
   crearTalla(){
+    this.tallaC = new Talla();
     $('#modalCrearTalla').modal('open');
   }
   guardarCrearTalla(){

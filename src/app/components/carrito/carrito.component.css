@@ -29,3 +29,28 @@ h1 {
   th {
     background-color: #f2f2f2;
   }
+  .input-field {
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  select.browser-default {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    appearance: none; /* Elimina la apariencia predeterminada del select */
+    background-color: white;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23818181" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Agrega una flecha personalizada */
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+  }
+
+  select.browser-default:focus {
+    outline: none;
+    border-color: #007bff;
+  }

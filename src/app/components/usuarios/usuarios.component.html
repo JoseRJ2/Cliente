@@ -72,7 +72,11 @@
       </div>
       <div class="input-field col s12">
         <label class="active">Rol </label>
-        <input [(ngModel)]="usuarioM.Rol" type="text" class="validate">
+        <select [(ngModel)]='usuarioM.Rol' class="browser-default">
+          <option *ngFor="let rol of roles" [value]="rol.nombreRol">
+            {{rol.nombreRol}}
+          </option>
+        </select>
       </div>
       <div class="input-field col s12">
         <label class="active">Usuario </label>
@@ -117,7 +121,11 @@
       </div>
       <div class="input-field col s12">
         <label class="active">Rol </label>
-        <input [(ngModel)]="usuarioC.Rol" type="text" class="validate">
+        <select [(ngModel)]='usuarioC.Rol' class="browser-default">
+          <option *ngFor="let rol of roles" [value]="rol.nombreRol">
+            {{rol.nombreRol}}
+          </option>
+        </select>
       </div>
       <div class="input-field col s12">
         <label class="active">Usuario </label>

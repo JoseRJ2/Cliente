@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService} from './../../services/usuario.service';
 import { Usuario } from './../../models/usuario';
-import e from 'cors';
+import { Rol } from './../../models/roles';
+import { RolesService } from './../../services/roles.service';
 declare var $: any;
 @Component({
   selector: 'app-usuarios',
@@ -9,13 +10,13 @@ declare var $: any;
   styleUrl: './usuarios.component.css'
 })
 export class UsuariosComponent implements OnInit {
+  roles : Rol [] = [];
   usuarios : Usuario [] = [];
   usuario :Usuario= new Usuario();
   usuarioE: Usuario= new Usuario();
   usuarioM: Usuario= new Usuario();
   usuarioC: Usuario= new Usuario();
-  constructor(private usuarioService : UsuarioService,){
-    
+  constructor(private usuarioService : UsuarioService, private rolesService : RolesService){ 
   }
   ngOnInit(): void {
     $(document).ready(function()
@@ -35,10 +36,13 @@ export class UsuariosComponent implements OnInit {
 
   actualizarUsuario(id_usuario:any)
   {
-    console.log(id_usuario);
     this.usuarioService.listOne(id_usuario).subscribe((resusuario: any) =>
     {
       this.usuarioM = resusuario;  
+    }, err => console.error(err));
+    this.rolesService.list().subscribe((resrol: any) =>
+    {
+      this.roles = resrol;  
     }, err => console.error(err));
     $("#modalModificarUsuario").modal("open");
     console.log("Antes de esto esta el error")
@@ -85,8 +89,13 @@ export class UsuariosComponent implements OnInit {
   }
 
   crearUsuario(){
+    this.usuarioC= new Usuario();
     this.usuarioC.usuario="";
     this.usuarioC.contrasena="";
+    this.rolesService.list().subscribe((resrol: any) =>
+    {
+      this.roles = resrol;  
+    }, err => console.error(err));
     $('#modalCrearUsuario').modal();
     $("#modalCrearUsuario").modal("open");
   }

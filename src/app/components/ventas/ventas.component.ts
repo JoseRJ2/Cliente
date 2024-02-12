@@ -1,6 +1,10 @@
 import { Component,OnInit } from '@angular/core';
 import { Venta } from 'app/models/ventas';
 import { VentasService } from 'app/services/ventas.service';
+import { ClientesService } from './../../services/clientes.service';
+import { Cliente } from './../../models/clientes';
+import { Usuario } from './../../models/usuario';
+import { UsuarioService } from './../../services/usuario.service';
 declare var $: any;
 @Component({
   selector: 'app-ventas',
@@ -8,11 +12,13 @@ declare var $: any;
   styleUrl: './ventas.component.css'
 })
 export class VentasComponent implements OnInit{
+  clientes: Cliente[] = []
+  usuarios: Usuario[] = []
   ventas: Venta[] = []
   venta: Venta = new Venta();
   ventaM: Venta = new Venta();
   ventaE: Venta = new Venta();
-  constructor(private ventaService: VentasService) { }
+  constructor(private ventaService: VentasService, private clientesService : ClientesService, private usuarioService : UsuarioService) { }
 
   ngOnInit(): void {
     $(document).ready(function()
@@ -37,6 +43,14 @@ export class VentasComponent implements OnInit{
     }, err => console.error(err));
   }
   actualizarVenta(venta:any){
+    this.clientesService.list().subscribe((resusuario: any) =>
+    {
+      this.clientes = resusuario;
+    }, err => console.error(err));
+    this.usuarioService.list().subscribe((resusuario: any) =>
+    {
+      this.usuarios = resusuario;
+    }, err => console.error(err));
     this.ventaM.id = venta;
     this.ventaService.listOne(venta).subscribe((resusuario: any) =>
     {
