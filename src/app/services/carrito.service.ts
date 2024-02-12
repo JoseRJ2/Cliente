@@ -28,4 +28,7 @@ export class CarritoService {
   pagarcarrito(idCarrito:any,descuento:any,fecha:any){
     return this.http.post(`${environment.API_URI}/api/carritos/pagarcarrito/`,{"idCarrito":idCarrito,"descuento":descuento,"fecha":fecha});
   }
+  eliminar(id:any){
+    return this.http.delete(`${environment.API_URI}/api/carritos/delete/${id}`);
+  }
 }

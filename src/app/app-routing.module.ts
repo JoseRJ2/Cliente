@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { VentasUsuarioComponent } from './components/ventas-usuario/ventas-usuario.component';
 import { ListCarritoComponent } from './components/list-carrito/list-carrito.component';
+import { CarritoAdminComponent } from './components/carrito-admin/carrito-admin.component';
 const routes: Routes = [
   {
     path:"",
@@ -43,6 +44,9 @@ const routes: Routes = [
       },{
         path:"ventas",
         component:VentasComponent
+      },{
+        path: "carritos",
+        component:CarritoAdminComponent
       }
     ]
   },{

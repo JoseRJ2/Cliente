@@ -1,0 +1,62 @@
+<h1>CARRITOS DE COMPRAS</h1>
+<div class="row center-align">
+  <div class="input-field col s1">
+    <input id="last_name" [(ngModel)]="carrito.id" type="text" class="validate">
+    <label class="active">Buscar Carrito(id)</label>
+  </div>
+  <div class="input-field col s0">
+    <div class="buttonB">
+      <a class="waves-effect waves-light btn"><i class="material-icons left">search</i></a>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="row" *ngIf="carritos !== undefined">
+      <div class="col s12">
+        <div class="container">
+          <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Cliente</th>
+                <th>Fecha Limite</th>
+                <th>Estado</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let carrito of carritos">
+                <td>{{ carrito.id }}</td>
+                <td>{{ carrito.Usuario }}</td>
+                <td>{{ carrito.Cliente}}</td>
+                <td>{{ carrito.fechaLimite}}</td>
+                <td>{{ carrito.estado    }}</td>
+                <td>
+                    <div style="text-align: center;">
+                      <a class="waves-effect waves-light btn modal-trigger" data-target="modalEliminarCarrito" (click)="eliminarCarrito(carrito.id)">
+                        <i class="material-icons">delete</i>
+                      </a>
+                    </div>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Empieza Modal Eliminar Cliente -->
+<div id="modalEliminarCarrito" class="modal">
+    <div class="modal-content">
+      <h4>¿Estas seguro de eliminar este cliente?</h4>
+      <div class="row">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat">Cancelar</a>
+      <a class="btn" (click)="guardarEliminarCarrito()">Eliminar</a>
+    </div>
+</div>
+<!-- Termina Modal -->
