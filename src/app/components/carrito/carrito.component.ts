@@ -49,7 +49,8 @@ export class CarritoComponent implements OnInit{
       this.carritos.push(data);
     }, error => console.error(error));
   } 
-  anadirProductosCarrito(){
+  anadirProductosCarrito(carrito: any){
+    this.addProduct.idCarrito = carrito;
     $('#modalAñadirProductos').modal('open');
   }
   guardarAnadirProductos(){
@@ -82,7 +83,8 @@ export class CarritoComponent implements OnInit{
     }, error => console.error(error));
     $('#modalCancelarCarrito').modal('close');
   }
-  pagarCarrito(){
+  pagarCarrito(carrito: any){
+    this.pagarC.idCarrito = carrito;
     $('#modalPagarCarrito').modal('open');
   } 
   guardarPagarCarrito(){
